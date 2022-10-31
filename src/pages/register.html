@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/global/globalStyles.css">
+    <link rel="stylesheet" href="../styles/global/header.css">
+    <link rel="stylesheet" href="../styles/register/register.css">
+    <link rel="stylesheet" href="../styles/login/media-login.css">
     <title>Register-Page</title>
 </head>
 <body>
@@ -20,7 +24,7 @@
             </div>
             <div class="div-buttons ">
                 <a href="../../index.html"><button class="btn-login">Pagina Inicial</button></a>
-                <a href="../../src/pages/register.html"><button class="btn-register">Login</button></a>
+                <a href="../pages/login.html"><button class="btn-register">Login</button></a>
             </div>
         </div>
     </header>
@@ -28,7 +32,6 @@
        <div class="box-login">
            <form id ="form" action="">
             <h2>Cadastre-se</h2>
-            <p>Preencha os campos para realizar login</p>
             <input type="text" name="username" id="username" placeholder="Seu nome">
             <input name="email" type="email" placeholder="Seu e-mail">
             <input name="password" type="password" placeholder="Sua senha">
@@ -40,9 +43,9 @@
             </select>
             <button id="btn-register" type="submit">Cadastre-se</button>
            </form>
-           <p>ou</p>
-           <button id="btn-return" class="register"> Retornar</button>
+           <a href="../../index.html"><button id="btn-return" class="register"> Retornar</button></a>
        </div>
     </main>
+    <script src="../scripts/register/register.js"></script>
 </body>
 </html>
