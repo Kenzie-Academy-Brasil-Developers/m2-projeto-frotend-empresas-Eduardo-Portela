@@ -1,23 +1,24 @@
+import {getSectors, getFullCompanies} from "../global/requests.js"
 
-async function render(list){
+const getSector = await getSectors()
+const getInfoCompanies = await getFullCompanies()
+console.log(getInfoCompanies)
+
+async function render(){
     const companyList =document.createElement("ul")
     companyList.classList.add("list-companies")
-
-    const selectSetor = document.querySelector(".select-by-setor")
-    console.log(companyList)
     
+    const selectSetor = document.querySelector(".select-by-setor")
 
-    const select = document.createElement("select")
-    select.setAttribute("name", "setor")
-    select.id = "select-setor"
+    const select = document.getElementById("select-setor")
+    
+    getSector.forEach(element => {
+        
+    const option = document.createElement("option")
+    option.setAttribute("value", `${element.description}`)
+    option.innerText = `${element.description}`
 
-    select.insertAdjacentHTML("beforeend", `
-    <option value="">Selecionar Setor</option>
-                <option value="">Selecionar Setor</option>
-                <option value="">Selecionar Setor</option>
-                <option value="">Selecionar Setor</option>
-    `)
-
+    select.appendChild(option)
 
     const cardLi = document.createElement("li")
     cardLi.classList.add("company")
@@ -31,11 +32,12 @@ async function render(list){
     companySetor.innerText = "setor"
 
     cardLi.append(companyName, companyTime, companySetor)
+    
     companyList.appendChild(cardLi)
     selectSetor.append(select, companyList)
+});
 }
 
 export {
     render,
-
 }

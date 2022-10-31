@@ -1,4 +1,4 @@
-import {render} from "./render.js"
+import {render} from "../homepage/render.js"
 
 function menuBurger(imgPath){
 const menuBurger = document.getElementById("burguer")
