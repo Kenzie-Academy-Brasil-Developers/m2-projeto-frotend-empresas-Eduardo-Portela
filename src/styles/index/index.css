@@ -9,6 +9,7 @@
     background-color: var(--brand-1);
     color: var(--white);
     font-size: var(--font-size-5);
+    outline:none;
 }
 
 .list-companies{
@@ -33,7 +34,8 @@
 .list-companies .company p{
     margin-bottom: 16px;
 }
-.list-companies .company button{
+.list-companies .company span{
+    padding: 8px 15px;
     width: 73px;
     border-radius: 255px;
     height: 32px;

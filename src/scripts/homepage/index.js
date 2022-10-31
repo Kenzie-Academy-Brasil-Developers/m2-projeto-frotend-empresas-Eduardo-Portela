@@ -1,3 +1,5 @@
+import {render} from "./render.js"
+
 function menuBurger(imgPath){
 const menuBurger = document.getElementById("burguer")
 const showmenu = document.querySelector(".div-buttons")
@@ -13,6 +15,5 @@ menuBurger.addEventListener("click", () => {
 
 menuBurger("src/assets/img/hamburguer.png")
 
-export{
-    menuBurger,
-}
+
+render()
