@@ -20,22 +20,25 @@ async function render(){
 
     select.appendChild(option)
 
-    const cardLi = document.createElement("li")
-    cardLi.classList.add("company")
-
-    const companyName = document.createElement("h3")
-    const companyTime = document.createElement("p")
-    const companySetor = document.createElement("span")
-
-    companyName.innerText = "Empresa name"
-    companyTime.innerText = "10 Horas"
-    companySetor.innerText = "setor"
-
-    cardLi.append(companyName, companyTime, companySetor)
-    
-    companyList.appendChild(cardLi)
-    selectSetor.append(select, companyList)
+    selectSetor.append(select)
 });
+
+    getInfoCompanies.forEach((company) => {
+        const cardLi = document.createElement("li")
+        cardLi.classList.add("company")
+    
+        const companyName = document.createElement("h3")
+        const companyTime = document.createElement("p")
+        const companySetor = document.createElement("span")
+    
+        companyName.innerText = `${company.name}`
+        companyTime.innerText = `${company.opening_hours}`
+        companySetor.innerText = `${company.sectors.description}`
+    
+        cardLi.append(companyName, companyTime, companySetor)
+        companyList.appendChild(cardLi)
+        selectSetor.append(companyList)
+    })
 }
 
 export {
