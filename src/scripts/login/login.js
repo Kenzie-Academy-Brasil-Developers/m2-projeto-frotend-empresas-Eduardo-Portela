@@ -1,4 +1,4 @@
-import { loginRequest } from "../global/requests.js"
+import { loginRequest, isAdmim } from "../global/requests.js"
 
 async function menuBurger(imgPath){
     const menuBurger = document.getElementById("burguer")
@@ -30,6 +30,7 @@ function login(){
             
         })
         await loginRequest(body)
+        await isAdmim()
     })
 }
 
