@@ -4,9 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/global/globalStyles.css">
+    <link rel="stylesheet" href="../styles/global/header.css">
+    <link rel="stylesheet" href="../styles/DashBoards/dashBoardAdm.css">
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>AQUI È A PAGE DO ADM</h1>
+    <header>
+        <div class="cover-header">
+            <div class="header">
+                <div class="div-logo ">
+                    <img src="../assets/img/logo-kenzie.png" alt="Logo-kenzie">
+                    <h4>Kenzie Empresas</h4>
+                </div>
+                <div class="div-logout">
+                    <button id="logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="departmens">
+            <h2>Departamentos</h2>
+            <select name="select-company" id="select-company">
+                <option value="">aqeqwe</option>
+                <option value="">qweqe</option>
+            </select>
+
+            <button><img src="" alt=""> Criar</button>
+        </div>
+        <ul class="department-list">
+            <li class="department">
+                <h3>Department Name</h3>
+                <p>Department description</p>
+                <p>Company Name</p>
+                <div class="functions">
+                    <button>eye</button>
+                    <button>pen</button>
+                    <button>trash</button>     
+                </div>
+            </li>
+        </ul>
+
+        <div class="title-second-list">
+            <h2>Usuários Cadastrados</h2>
+        </div>
+
+        <ul class="user-list">
+            <li class="user">
+                <h3>UserName</h3>
+                <p>Nivel</p>
+                <p>Company Name</p>
+                <div class="function-user">
+                    <button>pen</button>
+                    <button>trash</button>
+                </div>
+            </li>
+        </ul>
+
+    </main>
 </body>
 </html>
