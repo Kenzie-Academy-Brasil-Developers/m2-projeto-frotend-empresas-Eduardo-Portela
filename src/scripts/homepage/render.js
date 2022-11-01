@@ -1,17 +1,16 @@
-import {getSectors, getFullCompanies} from "../global/requests.js"
+import {getSectors} from "../global/requests.js"
 
 const getSector = await getSectors()
-const getInfoCompanies = await getFullCompanies()
-console.log(getInfoCompanies)
+
+const selectSetor = document.querySelector(".select-by-setor")
+
+const companyList =document.createElement("ul")
+companyList.classList.add("list-companies")
 
 async function render(){
-    const companyList =document.createElement("ul")
-    companyList.classList.add("list-companies")
-    
-    const selectSetor = document.querySelector(".select-by-setor")
 
     const select = document.getElementById("select-setor")
-    
+
     getSector.forEach(element => {
         
     const option = document.createElement("option")
@@ -23,7 +22,15 @@ async function render(){
     selectSetor.append(select)
 });
 
-    getInfoCompanies.forEach((company) => {
+  
+}
+
+async function renderCompanies(list){
+
+    companyList.innerHTML = ""
+
+
+    list.forEach((company) => {
         const cardLi = document.createElement("li")
         cardLi.classList.add("company")
     
@@ -43,4 +50,5 @@ async function render(){
 
 export {
     render,
+    renderCompanies
 }
