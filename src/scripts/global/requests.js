@@ -1,3 +1,5 @@
+import { toast } from "./toast.js"
+
 const baseUrl = "http://localhost:6278"
 
 async function getSectors(){
@@ -36,7 +38,35 @@ async function getFullCompanies(){
     }
 }
 
+async function registerUser(body1){
+    try {
+        const request = await fetch(`${baseUrl}/auth/register`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(body1)
+        })
+        if(request.ok){
+            const response = await request.json()
+
+            toast("Sucesso!", "Cadastro realizado com sucesso", "../assets/img/check.png")
+
+            setTimeout(()=> {
+                window.location.assign("../pages/login.html")
+            },4000)
+
+        }else{
+            toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
+        }
+
+    } catch(error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
+    registerUser,
 }
