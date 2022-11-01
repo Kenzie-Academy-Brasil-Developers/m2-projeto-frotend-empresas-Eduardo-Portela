@@ -1,0 +1,135 @@
+body{
+    scrollbar-face-color: red;
+}
+
+header{
+    margin-bottom: 80px;
+}
+
+.header{
+    margin: 0;
+    justify-content: space-between;
+    width: auto;
+}
+
+.div-logout #logout{
+    width: 142px;
+    height: 48px;
+    border: 1px solid var(--brand-1);
+    background-color: transparent;
+    color: var(--brand-1);
+    font-size: var(--font-size-4);
+    font-weight: 600;
+}
+
+.departmens{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 19px;
+}
+.departmens h2{
+    font-size: 30px;
+}
+
+.departmens select{
+    width: 282px;
+    height: 32px;
+    border: 1px solid var(--black);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.departmens button{
+    font-size: 18px;
+    padding-left: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    width: 150px;
+    height: 48px;
+    background-color: var(--brand-1);
+    color: var(--white);
+    border: 1px solid var(--brand-1);
+}
+
+/* Departament list */
+
+.department-list, .user-list{
+    background-color: var(--grey-6);
+    padding: 34px 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+    height: 385px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+}
+
+.department-list::-webkit-scrollbar{
+    width: 10px;
+}
+
+.user-list::-webkit-scrollbar{
+    width: 10px;
+}
+
+.department-list::-webkit-scrollbar-thumb, .user-list::-webkit-scrollbar-thumb{
+    background-color: var(--brand-1);
+}
+
+.department-list .department, .user{
+    width: 489px;
+    height: 196px;
+    background-color: var(--white);
+    padding: 18px 0 0 29px;
+    border-bottom: 1px solid var(--brand-1);
+}
+
+.department-list .department h3, .user h3{
+    font-size: var(--font-size-3);
+}
+
+.department-list .department p, .user p{
+    margin: 9px 0;
+}
+
+.department-list .department .functions, .user .function-user{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.functions button, .function-user button{
+    width: 44px;
+    height: 33px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+}
+
+.view{
+
+    background-image: url(../../assets/img/eye.png);
+}
+.edit{
+    background-image: url(../../assets/img/pen.png);
+}
+.delete{
+    background-image: url(../../assets/img/trash.png);
+}
+
+/*User list*/
+
+.title-second-list h2{
+    margin-top: 69px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.function-user :nth-child(1){
+    background-image: url(../../assets/img/pen-color.png);
+}
