@@ -90,9 +90,37 @@ async function loginRequest(body1){
     }
 }
 
+async function isAdmim(){
+    const localToken = JSON.parse(localStorage.getItem("token"))
+    try {
+        const request = await fetch(`${baseUrl}/auth/validate_user`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+        const response = await request.json()
+        console.log(response)
+        if(response.is_admin){
+            setTimeout(()=> {
+                window.location.assign("../pages/dashboardAdm.html")
+            }, 4000)
+        }else{
+            setTimeout(()=> {
+                window.location.assign("../pages/dashBoardUser.html")
+            }, 4000)
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
     registerUser,
-    loginRequest
+    loginRequest,
+    isAdmim
 }
