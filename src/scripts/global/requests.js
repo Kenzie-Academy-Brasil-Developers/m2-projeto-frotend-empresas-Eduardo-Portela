@@ -1,3 +1,4 @@
+import { getLocalStorage } from "./localStorage.js"
 import { toast } from "./toast.js"
 
 const baseUrl = "http://localhost:6278"
@@ -91,7 +92,7 @@ async function loginRequest(body1){
 }
 
 async function isAdmim(){
-    const localToken = JSON.parse(localStorage.getItem("token"))
+    const localToken = getLocalStorage("token")
     try {
         const request = await fetch(`${baseUrl}/auth/validate_user`, {
             method: "GET",
