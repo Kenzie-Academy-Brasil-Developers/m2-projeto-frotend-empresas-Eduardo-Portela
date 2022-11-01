@@ -40,6 +40,11 @@ button{
     margin: 0 auto;
 }
 
+.container-dash{
+    width: 1182px;
+    margin: 0 auto;
+}
+
 body{
     font-family: "Inter", sans-serif;
 }
