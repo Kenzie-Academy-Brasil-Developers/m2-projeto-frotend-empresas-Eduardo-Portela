@@ -65,8 +65,34 @@ async function registerUser(body1){
     }
 }
 
+async function loginRequest(body1){
+    try {
+        const request = await fetch(`${baseUrl}/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body1)
+        })
+
+        if(request.ok){
+            const response = await request.json()
+            localStorage.setItem("token", JSON.stringify(response))
+
+            toast("Sucesso!", "Login realizado com sucesso", "../assets/img/check.png")
+
+        }else{
+            toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
+        }
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
     registerUser,
+    loginRequest
 }

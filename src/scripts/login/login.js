@@ -1,8 +1,6 @@
-// import { menuBurger } from "./index.js";
+import { loginRequest } from "../global/requests.js"
 
-// menuBurger("../../src/assets/img/hamburguer.png")
-
-function menuBurger(imgPath){
+async function menuBurger(imgPath){
     const menuBurger = document.getElementById("burguer")
     const showmenu = document.querySelector(".div-buttons")
     menuBurger.addEventListener("click", () => {
@@ -16,3 +14,23 @@ function menuBurger(imgPath){
     }
     
     menuBurger("../../src/assets/img/hamburguer.png")
+
+function login(){
+    const form = document.querySelector("#form-login")
+    const elements = [...form.elements]
+
+    const body = {}
+    
+    form.addEventListener("submit", async (e)=> {
+        e.preventDefault()
+        elements.forEach((input) => {
+            if(input.name){
+                body[input.name] = input.value
+            }
+            
+        })
+        await loginRequest(body)
+    })
+}
+
+login()
