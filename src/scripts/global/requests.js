@@ -232,6 +232,22 @@ async function editUser(body1,uuid){
     }
 }
 
+async function deleteUser(uuid){
+    try {
+        const request = await fetch(`${baseUrl}/admin/delete_user/${uuid}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -244,4 +260,5 @@ export{
     deleteDepartment,
     getAllUsers,
     editUser,
+    deleteUser,
 }
