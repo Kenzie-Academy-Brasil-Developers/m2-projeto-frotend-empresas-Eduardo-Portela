@@ -1,34 +1,36 @@
 import { renderDepartments } from "../dashBoardAdm/render.js"
-import { createDepartmentRequest, getFullCompanies } from "./requests.js"
+import { createDepartmentRequest, getAllDepartments, getFullCompanies } from "./requests.js"
 
 const body = document.querySelector("body")
+
 
 const createModal = (content) => {
     const backGround = document.createElement("div")
     const modal = document.createElement("div")
     const buttonClose = document.createElement("button")
-
+    
     backGround.classList.add("back-modal")
     modal.classList.add("modal")
     buttonClose.classList.add("button-close")
-
+    
     buttonClose.innerText = "X"
-
+    
     backGround.addEventListener("click", (event) => {
         const {className} = event.target
         if(className == "back-modal" || className == "button-close" || className == "cancel"){
             backGround.remove()
         }
     })
-
+    
     modal.appendChild(buttonClose)
     modal.appendChild(content)
     backGround.appendChild(modal)
-
+    
     body.appendChild(backGround)
 }
 
 const createDepartmentForm = async ()=> {
+
     const companies = await getFullCompanies()
 
     const form = document.createElement("form")
@@ -78,9 +80,13 @@ const createDepartmentForm = async ()=> {
         inputs.forEach(({name,value}) => {
             newDepart[name] = value
         })
-        
+        const backModal = e.path[2]
+
         await createDepartmentRequest(newDepart)
-        await renderDepartments()
+        const departments = await getAllDepartments()
+
+        await renderDepartments(departments)
+        backModal.remove()
 
     })
     

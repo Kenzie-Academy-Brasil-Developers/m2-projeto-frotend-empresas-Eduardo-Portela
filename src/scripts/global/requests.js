@@ -152,7 +152,6 @@ async function getAllDepartments(){
         })
 
         const response = await request.json()
-        console.log(response)
         return response
         
     } catch (error) {
