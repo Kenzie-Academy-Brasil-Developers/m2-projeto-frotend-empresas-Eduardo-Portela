@@ -1,4 +1,5 @@
 import { getLocalStorage } from "../global/localStorage.js"
+import { renderCompaniesOnSelect } from "./render.js"
 
 const verify = () => {
     const user = getLocalStorage("token")
@@ -18,3 +19,7 @@ const logout = () => {
 }
 
 logout()
+
+
+
+renderCompaniesOnSelect()
