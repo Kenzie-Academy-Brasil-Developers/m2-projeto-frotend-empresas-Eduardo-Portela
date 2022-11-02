@@ -159,14 +159,15 @@ async function getAllDepartments(){
     }
 }
 
-async function editDepartment(uuid){
+async function editDepartment(body1,uuid){
     try {
         const request = await fetch(`${baseUrl}/departments/${uuid}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localToken.token}`
-            }
+            },
+            body: JSON.stringify(body1) 
         })
         
         const response = await request.json()

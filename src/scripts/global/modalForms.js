@@ -1,5 +1,5 @@
 import { renderDepartments } from "../dashBoardAdm/render.js"
-import { createDepartmentRequest, getAllDepartments, getFullCompanies } from "./requests.js"
+import { createDepartmentRequest, editDepartment, getAllDepartments, getFullCompanies } from "./requests.js"
 
 const body = document.querySelector("body")
 
@@ -94,11 +94,49 @@ const createDepartmentForm = async ()=> {
 
 }
 
-// const editDepartmentForm = async () => {
+const editDepartmentForm = async ({description,uuid}) => {
 
-// }
+    const form = document.createElement("form")
+
+    const title = document.createElement("h2")
+    title.innerText ="Editar Departamento"
+
+    const departDescription = document.createElement("input")
+    departDescription.setAttribute("name","description")
+    departDescription.value = `${description}`
+
+    const buttonEdit = document.createElement("button")
+    buttonEdit.innerText = "Confimar Edição"
+
+    form.append(title, departDescription, buttonEdit)
+
+    const bodyEdited = {}
+
+    form.addEventListener("submit", async (e) =>{
+        e.preventDefault()
+        const input = [...e.target]
+        
+        input.forEach(({name,value}) =>{
+            if(name){
+                bodyEdited[name] = value
+
+            }
+        })
+
+        const backModal = e.path[2]
+        
+        await editDepartment(bodyEdited,uuid)
+        const departments = await getAllDepartments()
+        await renderDepartments(departments)
+
+        backModal.remove()
+        
+    })
+    return form
+}
 
 export {
     createModal,
-    createDepartmentForm
+    createDepartmentForm,
+    editDepartmentForm
 }
