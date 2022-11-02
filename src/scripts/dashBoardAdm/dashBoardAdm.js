@@ -1,7 +1,7 @@
 import { getLocalStorage } from "../global/localStorage.js"
 import { createDepartmentForm, createModal, editDepartmentForm } from "../global/modalForms.js"
 import { getAllDepartments } from "../global/requests.js"
-import { renderByCompany, renderCompaniesOnSelect, renderDepartments } from "./render.js"
+import { renderAllUsers, renderByCompany, renderCompaniesOnSelect, renderDepartments } from "./render.js"
 
 const departments = await getAllDepartments()
 
@@ -36,3 +36,4 @@ renderDepartments(departments)
 createDepartment()
 renderCompaniesOnSelect()
 renderByCompany()
+renderAllUsers()

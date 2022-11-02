@@ -83,8 +83,16 @@ const renderByCompany = async() => {
     })
 }
 
+const renderAllUsers = async() => {
+    const listUsers = document.querySelector(".user-list")
+    //listUsers.innerHTML = ""
+
+
+}
+
 export {
     renderCompaniesOnSelect,
     renderDepartments,
-    renderByCompany
+    renderByCompany,
+    renderAllUsers
 }
