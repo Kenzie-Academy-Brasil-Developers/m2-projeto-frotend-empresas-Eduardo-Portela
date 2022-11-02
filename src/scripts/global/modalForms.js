@@ -97,15 +97,18 @@ const createDepartmentForm = async ()=> {
 const editDepartmentForm = async ({description,uuid}) => {
 
     const form = document.createElement("form")
+    form.classList.add("form-edit")
 
     const title = document.createElement("h2")
     title.innerText ="Editar Departamento"
 
-    const departDescription = document.createElement("input")
+    const departDescription = document.createElement("textarea")
+    departDescription.classList.add("edit-description")
     departDescription.setAttribute("name","description")
     departDescription.value = `${description}`
 
     const buttonEdit = document.createElement("button")
+    buttonEdit.classList.add("button-edit")
     buttonEdit.innerText = "Confimar Edição"
 
     form.append(title, departDescription, buttonEdit)

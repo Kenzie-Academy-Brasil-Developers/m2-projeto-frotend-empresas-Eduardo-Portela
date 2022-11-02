@@ -14,6 +14,7 @@
     padding: 16px;
     position: relative;
     width: max-content;
+    height: max-content;
     background-color: white;
 }
 
@@ -31,11 +32,10 @@
 
 /*Modal Create Department*/
 
-.create-depart-form{
+.create-depart-form , .form-edit{
     display: flex;
     flex-direction: column;
     width: 506px;
-    height: 350px;
     padding: 16px;
 }
 
@@ -56,7 +56,7 @@
     color: var(--grey-3);
 }
 
-.create-depart-form button{
+.create-depart-form button, .form-edit .button-edit{
     height: 52px;
     margin-bottom: 13px;
     background-color: var(--brand-1);
@@ -64,3 +64,22 @@
     font-size: 18px;
     border: none;
 }
+
+/*modal edit department*/
+
+.form-edit h2{
+    
+}
+
+.form-edit .edit-description{
+    height: 113px;
+    margin: 20px 0;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-edit .edit-description::-webkit-input-placeholder{
+
+}
+
