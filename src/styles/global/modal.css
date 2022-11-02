@@ -13,7 +13,7 @@
 .modal{
     padding: 16px;
     position: relative;
-    width: 600px;
+    width: max-content;
     background-color: white;
 }
 
@@ -26,4 +26,41 @@
     right: 10px;
     top: 10px;
     cursor: pointer;
+}
+
+
+/*Modal Create Department*/
+
+.create-depart-form{
+    display: flex;
+    flex-direction: column;
+    width: 506px;
+    height: 350px;
+    padding: 16px;
+}
+
+.create-depart-form h2{
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.create-depart-form input, .create-depart-form select{
+    height: 52px;
+    margin-bottom: 13px;
+    padding-left: 16px;
+    outline-color: var(--brand-1);
+}
+
+.create-depart-form select{
+    color: var(--grey-3);
+}
+
+.create-depart-form button{
+    height: 52px;
+    margin-bottom: 13px;
+    background-color: var(--brand-1);
+    color: var(--white);
+    font-size: 18px;
+    border: none;
 }

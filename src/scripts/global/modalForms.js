@@ -31,6 +31,7 @@ const createDepartmentForm = async ()=> {
     const companies = await getFullCompanies()
 
     const form = document.createElement("form")
+    form.classList.add("create-depart-form")
     
     const title = document.createElement("h2")
     title.innerText ="Criar Departamento"
