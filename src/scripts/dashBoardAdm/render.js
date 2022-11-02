@@ -1,5 +1,6 @@
 import { getAllDepartments, getFullCompanies } from "../global/requests.js";
 
+const departments = await getAllDepartments()
 
 const renderCompaniesOnSelect = async () => {
     const companies = await getFullCompanies()
@@ -9,19 +10,20 @@ const renderCompaniesOnSelect = async () => {
     companies.forEach(company => {
         const option = document.createElement("option")
         option.innerText = company.name
+        option.value = company.name
         select.appendChild(option)
     });
 
 }
 
-const renderDepartments = async () => {
+const renderDepartments = async (list) => {
 
-    const departments = await getAllDepartments()
+
 
     const departList = document.querySelector(".department-list")
     departList.innerHTML = ""
 
-    departments.forEach((department) => {
+    list.forEach((department) => {
 
     const departLi = document.createElement("li")
     departLi.id = `${department.uuid}`
@@ -53,7 +55,21 @@ const renderDepartments = async () => {
 })
 }
 
+const renderByCompany = async() => {
+    const select = document.querySelector("#select-company")
+    select.addEventListener("change", () => {
+        const departsFiltered = departments.filter((depart)=> depart.companies.name == select.value)
+        if(select.value == ""){
+            renderDepartments(departments)
+        }else{
+            renderDepartments(departsFiltered)
+
+        }
+    })
+}
+
 export {
     renderCompaniesOnSelect,
-    renderDepartments
+    renderDepartments,
+    renderByCompany
 }
