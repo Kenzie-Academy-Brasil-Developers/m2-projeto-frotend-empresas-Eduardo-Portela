@@ -96,6 +96,7 @@ const renderAllUsers = async(list) => {
         if(!user.is_admin){
 
             const userLI = document.createElement("li")
+            userLI.id = `${user.uuid}`
             userLI.classList.add("user")
             const userName = document.createElement("h3")
             userName.innerText = `${user.username}`
