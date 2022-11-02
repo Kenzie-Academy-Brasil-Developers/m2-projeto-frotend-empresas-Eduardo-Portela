@@ -1,4 +1,4 @@
-import { createModal, editDepartmentForm } from "../global/modalForms.js";
+import { createModal, deleteDepartmentForm, editDepartmentForm } from "../global/modalForms.js";
 import { editDepartment, getAllDepartments, getFullCompanies } from "../global/requests.js";
 
 const departments = await getAllDepartments()
@@ -57,6 +57,11 @@ const renderDepartments = async (list) => {
 
     const buttonDelete = document.createElement("button")
     buttonDelete.classList.add("delete")
+
+    buttonDelete.addEventListener("click", async() => {
+        const deleteModal = await deleteDepartmentForm(department)
+        createModal(deleteModal)
+    })
 
     divFunctions.append(buttonView, buttonEdit, buttonDelete)
     departLi.append(departName, departDescription, companyName, divFunctions)

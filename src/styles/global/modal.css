@@ -16,6 +16,7 @@
     width: max-content;
     height: max-content;
     background-color: white;
+    border-radius: 4px;
 }
 
 .button-close{
@@ -79,3 +80,30 @@
     font-size: 16px;
 }
 
+
+/*Modal delete*/
+
+.form-delete{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.form-delete .delete-description{
+    text-align: center;
+    width: 420px;
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+.form-delete .button-delete{
+    margin-top: 38px;
+    width: 422px;
+    height: 48px;
+    background-color: var(--sucess);
+    color: var(--white);
+    font-size: 18px;
+    border: none;
+}

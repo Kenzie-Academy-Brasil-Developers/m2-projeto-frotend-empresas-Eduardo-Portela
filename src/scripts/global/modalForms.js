@@ -1,5 +1,6 @@
 import { renderDepartments } from "../dashBoardAdm/render.js"
-import { createDepartmentRequest, editDepartment, getAllDepartments, getFullCompanies } from "./requests.js"
+import { createDepartmentRequest, deleteDepartment, editDepartment, getAllDepartments, getFullCompanies } from "./requests.js"
+import { toast } from "./toast.js"
 
 const body = document.querySelector("body")
 
@@ -138,8 +139,39 @@ const editDepartmentForm = async ({description,uuid}) => {
     return form
 }
 
+const deleteDepartmentForm = async({name, uuid}) => {
+
+    const form = document.createElement("form")
+    form.classList.add("form-delete")
+
+    const description = document.createElement("p")
+    description.classList.add("delete-description")
+
+    description.innerText = `Realmente deseja deletar o Departamento ${name} e demitir seus funcionários?`
+
+    const buttonDelete = document.createElement("button")
+    buttonDelete.classList.add("button-delete")
+    buttonDelete.innerText = "Confirmar"
+
+    form.append(description, buttonDelete)
+
+    form.addEventListener("submit", async (e)=> {
+        e.preventDefault()
+
+        const backModal = e.path[2]
+        await deleteDepartment(uuid)
+        const departments = await getAllDepartments()
+        await renderDepartments(departments)
+        toast("Sucesso!", "Departamento deletado com sucesso", "../assets/img/check.png")
+        backModal.remove()
+    })
+
+    return form
+}
+
 export {
     createModal,
     createDepartmentForm,
-    editDepartmentForm
+    editDepartmentForm,
+    deleteDepartmentForm
 }

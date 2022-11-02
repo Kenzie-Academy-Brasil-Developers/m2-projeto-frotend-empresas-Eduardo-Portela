@@ -187,9 +187,6 @@ async function deleteDepartment(uuid){
                 "Authorization": `Bearer ${localToken.token}`
             }
         })
-        if(request.ok){
-            toast("Sucesso!", "Departamento deletado com sucesso", "../assets/img/check.png")
-        }
         
     } catch (error) {
         console.log(error)
