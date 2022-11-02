@@ -94,6 +94,10 @@ const createDepartmentForm = async ()=> {
 
 }
 
+// const editDepartmentForm = async () => {
+
+// }
+
 export {
     createModal,
     createDepartmentForm
