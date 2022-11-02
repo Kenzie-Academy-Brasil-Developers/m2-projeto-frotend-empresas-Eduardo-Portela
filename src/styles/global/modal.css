@@ -33,20 +33,20 @@
 
 /*Modal Create Department*/
 
-.create-depart-form , .form-edit{
+.create-depart-form , .form-edit, .edit-user-form{
     display: flex;
     flex-direction: column;
     width: 506px;
     padding: 16px;
 }
 
-.create-depart-form h2{
+.create-depart-form h2, .edit-user-form h2{
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-.create-depart-form input, .create-depart-form select{
+.create-depart-form input, .create-depart-form select , .edit-user-form select, .edit-user-form input{
     height: 52px;
     margin-bottom: 13px;
     padding-left: 16px;
@@ -57,7 +57,7 @@
     color: var(--grey-3);
 }
 
-.create-depart-form button, .form-edit .button-edit{
+.create-depart-form button, .form-edit .button-edit, .edit-user-form button{
     height: 52px;
     margin-bottom: 13px;
     background-color: var(--brand-1);
@@ -106,4 +106,9 @@
     color: var(--white);
     font-size: 18px;
     border: none;
+}
+
+/*Modal edit user*/
+.edit-user-form input::placeholder{
+    color: var(--black);
 }
