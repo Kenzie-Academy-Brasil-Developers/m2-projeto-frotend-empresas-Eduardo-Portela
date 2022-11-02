@@ -1,4 +1,5 @@
 import { getLocalStorage } from "../global/localStorage.js"
+import { createDepartmentForm, createModal } from "../global/modalForms.js"
 import { renderCompaniesOnSelect } from "./render.js"
 
 const verify = () => {
@@ -20,6 +21,15 @@ const logout = () => {
 
 logout()
 
+const createDepartment = async () => {
+    const buttonCreate = document.querySelector(".create-department")
+    buttonCreate.addEventListener("click", async () => {
+        const form = await createDepartmentForm()
+        createModal(form)
+    })
+}
+
+createDepartment()
 
 
 renderCompaniesOnSelect()
