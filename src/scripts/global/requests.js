@@ -159,6 +159,25 @@ async function getAllDepartments(){
     }
 }
 
+async function editDepartment(body1,uuid){
+    try {
+        const request = await fetch(`${baseUrl}/departments/${uuid}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            },
+            body: JSON.stringify(body1) 
+        })
+        
+        const response = await request.json()
+        return response
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -167,4 +186,5 @@ export{
     isAdmim,
     createDepartmentRequest,
     getAllDepartments,
+    editDepartment,
 }
