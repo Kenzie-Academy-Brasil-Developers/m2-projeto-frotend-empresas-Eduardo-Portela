@@ -2,6 +2,7 @@ import { getLocalStorage } from "./localStorage.js"
 import { toast } from "./toast.js"
 
 const baseUrl = "http://localhost:6278"
+const localToken = getLocalStorage("token")
 
 async function getSectors(){
     try{
@@ -93,7 +94,6 @@ async function loginRequest(body1){
 }
 
 async function isAdmim(){
-    const localToken = getLocalStorage("token")
     try {
         const request = await fetch(`${baseUrl}/auth/validate_user`, {
             method: "GET",
@@ -120,7 +120,7 @@ async function isAdmim(){
 }
 
 async function createDepartmentRequest(body1){
-    const localToken = getLocalStorage("token")
+
     try {
         const request = await fetch(`${baseUrl}/departments`, {
             method: "POST",
@@ -130,7 +130,29 @@ async function createDepartmentRequest(body1){
             },
             body: JSON.stringify(body1)
         })
+        if(request.ok){
+            toast("Sucesso!", "Departamento cadastrado com sucesso", "../assets/img/check.png" )
         const response = await request.json()
+        return response
+    }
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function getAllDepartments(){
+    try {
+        const request = await fetch(`${baseUrl}/departments`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+
+        const response = await request.json()
+        console.log(response)
         return response
         
     } catch (error) {
@@ -145,4 +167,5 @@ export{
     loginRequest,
     isAdmim,
     createDepartmentRequest,
+    getAllDepartments,
 }

@@ -1,6 +1,9 @@
 import { getLocalStorage } from "../global/localStorage.js"
 import { createDepartmentForm, createModal } from "../global/modalForms.js"
-import { renderCompaniesOnSelect } from "./render.js"
+import { getAllDepartments } from "../global/requests.js"
+import { renderCompaniesOnSelect, renderDepartments } from "./render.js"
+
+
 
 const verify = () => {
     const user = getLocalStorage("token")
@@ -30,6 +33,5 @@ const createDepartment = async () => {
 }
 
 createDepartment()
-
-
 renderCompaniesOnSelect()
+renderDepartments()
