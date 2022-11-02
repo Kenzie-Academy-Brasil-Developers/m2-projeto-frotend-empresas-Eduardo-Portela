@@ -119,10 +119,30 @@ async function isAdmim(){
     }
 }
 
+async function createDepartmentRequest(body1){
+    const localToken = getLocalStorage("token")
+    try {
+        const request = await fetch(`${baseUrl}/departments`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}` 
+            },
+            body: JSON.stringify(body1)
+        })
+        const response = await request.json()
+        return response
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
     registerUser,
     loginRequest,
-    isAdmim
+    isAdmim,
+    createDepartmentRequest,
 }

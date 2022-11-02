@@ -1,4 +1,4 @@
-import { getFullCompanies } from "./requests.js"
+import { createDepartmentRequest, getFullCompanies } from "./requests.js"
 
 const body = document.querySelector("body")
 
@@ -74,8 +74,8 @@ const createDepartmentForm = async ()=> {
         inputs.forEach(({name,value}) => {
             newDepart[name] = value
         })
-
-        console.log(newDepart)
+        
+        await createDepartmentRequest(newDepart)
 
 
 
