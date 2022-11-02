@@ -1,3 +1,4 @@
+import { renderDepartments } from "../dashBoardAdm/render.js"
 import { createDepartmentRequest, getFullCompanies } from "./requests.js"
 
 const body = document.querySelector("body")
@@ -39,10 +40,12 @@ const createDepartmentForm = async ()=> {
     const departName =document.createElement("input")
     departName.setAttribute("placeholder","Nome do departamento")
     departName.setAttribute("name","name")
+    departName.setAttribute("required","true")
     
     const departDescription = document.createElement("input")
     departDescription.setAttribute("placeholder","Descrição")
     departDescription.setAttribute("name","description")
+    departDescription.setAttribute("required","true")
 
     const selectCompany = document.createElement("select")
     selectCompany.setAttribute("name","company_uuid")
@@ -77,8 +80,7 @@ const createDepartmentForm = async ()=> {
         })
         
         await createDepartmentRequest(newDepart)
-
-
+        await renderDepartments()
 
     })
     

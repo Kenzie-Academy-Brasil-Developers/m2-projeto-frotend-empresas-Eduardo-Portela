@@ -1,4 +1,4 @@
-import { getFullCompanies } from "../global/requests.js";
+import { getAllDepartments, getFullCompanies } from "../global/requests.js";
 
 
 const renderCompaniesOnSelect = async () => {
@@ -14,6 +14,46 @@ const renderCompaniesOnSelect = async () => {
 
 }
 
+const renderDepartments = async () => {
+
+    const departments = await getAllDepartments()
+
+    const departList = document.querySelector(".department-list")
+    departList.innerHTML = ""
+
+    departments.forEach((department) => {
+
+    const departLi = document.createElement("li")
+    departLi.id = `${department.uuid}`
+    departLi.classList.add("department")
+
+    const departName = document.createElement("h3")
+    departName.innerText = `${department.name}`
+
+    const departDescription = document.createElement("p")
+    departDescription.innerText = `${department.description}`
+
+    const companyName = document.createElement("p")
+    companyName.innerText = `${department.companies.name}`
+
+    const divFunctions = document.createElement("div")
+    divFunctions.classList.add("functions")
+
+    const buttonView = document.createElement("button")
+    buttonView.classList.add("view")
+    const buttonEdit = document.createElement("button")
+    buttonEdit.classList.add("edit")
+    const buttonDelete = document.createElement("button")
+    buttonDelete.classList.add("delete")
+
+    divFunctions.append(buttonView, buttonEdit, buttonDelete)
+    departLi.append(departName, departDescription, companyName, divFunctions)
+
+    departList.appendChild(departLi)
+})
+}
+
 export {
     renderCompaniesOnSelect,
+    renderDepartments
 }
