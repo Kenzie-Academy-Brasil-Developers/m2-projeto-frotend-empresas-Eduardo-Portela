@@ -1,5 +1,5 @@
 import { renderAllUsers, renderDepartments } from "../dashBoardAdm/render.js"
-import { createDepartmentRequest, deleteDepartment, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies } from "./requests.js"
+import { createDepartmentRequest, deleteDepartment, deleteUser, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies } from "./requests.js"
 import { toast } from "./toast.js"
 
 const body = document.querySelector("body")
@@ -234,10 +234,41 @@ const editUserForm = async ({professional_level, kind_of_work, uuid}) => {
     return form
 }
 
+const deleteUserForm = async ({username, uuid}) => {
+    
+    const form = document.createElement("form")
+    form.classList.add("form-delete")
+
+    const description = document.createElement("p")
+    description.classList.add("delete-description")
+
+    description.innerText = `Realmente deseja remover o usuário ${username}?`
+
+    const buttonDelete = document.createElement("button")
+    buttonDelete.classList.add("button-delete")
+    buttonDelete.innerText = "Confirmar"
+
+    form.append(description, buttonDelete)
+
+    form.addEventListener("submit", async(e)=> {
+        e.preventDefault()
+
+        
+        await deleteUser(uuid)
+        const allUsers = await getAllUsers()
+        await renderAllUsers(allUsers)
+        const backModal = e.path[2]
+        backModal.remove()
+        console.log(allUsers)
+    })
+    return form
+
+    }
 export {
     createModal,
     createDepartmentForm,
     editDepartmentForm,
     deleteDepartmentForm,
-    editUserForm
+    editUserForm,
+    deleteUserForm,
 }

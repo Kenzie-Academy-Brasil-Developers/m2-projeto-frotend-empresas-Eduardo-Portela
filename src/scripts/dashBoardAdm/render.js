@@ -1,4 +1,4 @@
-import { createModal, deleteDepartmentForm, editDepartmentForm, editUserForm } from "../global/modalForms.js";
+import { createModal, deleteDepartmentForm, deleteUserForm, editDepartmentForm, editUserForm } from "../global/modalForms.js";
 import { editDepartment, getAllDepartments, getAllUsers, getFullCompanies } from "../global/requests.js";
 
 const departments = await getAllDepartments()
@@ -86,7 +86,6 @@ const renderByCompany = async() => {
 }
 
 const renderAllUsers = async(list) => {
-    console.log(allUsers)
 
     const listUsers = document.querySelector(".user-list")
     listUsers.innerHTML = ""
@@ -122,6 +121,11 @@ const renderAllUsers = async(list) => {
 
             const buttonDeleteUser = document.createElement("button")
             buttonDeleteUser.classList.add("delete")
+
+            buttonDeleteUser.addEventListener("click", async() => {
+                const modalDelete = await deleteUserForm(user)
+                createModal(modalDelete)
+            })
 
             divFunctionUser.append(buttonEditUser, buttonDeleteUser)
             userLI.append(userName,nivel,kindOfWork, divFunctionUser)
