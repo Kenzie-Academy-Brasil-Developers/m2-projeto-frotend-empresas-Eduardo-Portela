@@ -1,9 +1,10 @@
 import { getLocalStorage } from "../global/localStorage.js"
 import { createDepartmentForm, createModal, editDepartmentForm } from "../global/modalForms.js"
-import { getAllDepartments } from "../global/requests.js"
+import { getAllDepartments, getAllUsers } from "../global/requests.js"
 import { renderAllUsers, renderByCompany, renderCompaniesOnSelect, renderDepartments } from "./render.js"
 
 const departments = await getAllDepartments()
+const allUsers = await getAllUsers()
 
 const verify = () => {
     const user = getLocalStorage("token")
@@ -36,4 +37,4 @@ renderDepartments(departments)
 createDepartment()
 renderCompaniesOnSelect()
 renderByCompany()
-renderAllUsers()
+renderAllUsers(allUsers)

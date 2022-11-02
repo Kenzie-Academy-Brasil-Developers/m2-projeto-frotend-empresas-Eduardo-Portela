@@ -1,7 +1,8 @@
 import { createModal, deleteDepartmentForm, editDepartmentForm } from "../global/modalForms.js";
-import { editDepartment, getAllDepartments, getFullCompanies } from "../global/requests.js";
+import { editDepartment, getAllDepartments, getAllUsers, getFullCompanies } from "../global/requests.js";
 
 const departments = await getAllDepartments()
+const allUsers = await getAllUsers()
 
 const renderCompaniesOnSelect = async () => {
     const companies = await getFullCompanies()
@@ -76,6 +77,7 @@ const renderByCompany = async() => {
         const departsFiltered = departments.filter((depart)=> depart.companies.name == select.value)
         if(select.value == ""){
             renderDepartments(departments)
+            
         }else{
             renderDepartments(departsFiltered)
 
@@ -83,10 +85,44 @@ const renderByCompany = async() => {
     })
 }
 
-const renderAllUsers = async() => {
-    const listUsers = document.querySelector(".user-list")
-    //listUsers.innerHTML = ""
+const renderAllUsers = async(list) => {
+    console.log(allUsers)
 
+    const listUsers = document.querySelector(".user-list")
+    listUsers.innerHTML = ""
+
+    list.forEach((user) => {
+
+        if(!user.is_admin){
+
+            const userLI = document.createElement("li")
+            userLI.classList.add("user")
+            const userName = document.createElement("h3")
+            userName.innerText = `${user.username}`
+
+            const nivel = document.createElement("p")
+            nivel.innerText = `${user.professional_level}`
+
+            const company = document.createElement("p")
+
+            const kindOfWork = document.createElement("p")
+            kindOfWork.innerText = `${user.kind_of_work == null ? "" : user.kind_of_work }`
+
+            const divFunctionUser = document.createElement("div")
+            divFunctionUser.classList.add("function-user")
+
+            const buttonEditUser = document.createElement("button")
+            buttonEditUser.classList.add("edit")
+
+            const buttonDeleteUser = document.createElement("button")
+            buttonDeleteUser.classList.add("delete")
+
+            divFunctionUser.append(buttonEditUser, buttonDeleteUser)
+            userLI.append(userName,nivel,kindOfWork, divFunctionUser)
+            
+            listUsers.appendChild(userLI)
+        }
+    })
 
 }
 
