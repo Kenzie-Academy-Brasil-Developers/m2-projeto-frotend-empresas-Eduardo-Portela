@@ -81,6 +81,7 @@ async function loginRequest(body1){
             localStorage.setItem("token", JSON.stringify(response))
 
             toast("Sucesso!", "Login realizado com sucesso", "../assets/img/check.png")
+            isAdmim()
 
         }else{
             toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
@@ -107,7 +108,7 @@ async function isAdmim(){
             setTimeout(()=> {
                 window.location.assign("../pages/dashboardAdm.html")
             }, 4000)
-        }else{
+        }else if(!response.is_admin){
             setTimeout(()=> {
                 window.location.assign("../pages/dashBoardUser.html")
             }, 4000)

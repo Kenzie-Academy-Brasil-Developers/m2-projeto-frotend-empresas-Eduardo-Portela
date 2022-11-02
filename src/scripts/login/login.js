@@ -30,7 +30,6 @@ function login(){
             
         })
         await loginRequest(body)
-        await isAdmim()
     })
 }
 
