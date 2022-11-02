@@ -211,6 +211,27 @@ async function getAllUsers(){
     }
 }
 
+async function editUser(body1,uuid){
+    try {
+        const request = await fetch(`${baseUrl}/admin/update_user/${uuid}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            },
+            body: JSON.stringify(body1)
+        })
+
+        const response = await request.json()
+        console.log(response)
+        return response
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -222,4 +243,5 @@ export{
     editDepartment,
     deleteDepartment,
     getAllUsers,
+    editUser,
 }

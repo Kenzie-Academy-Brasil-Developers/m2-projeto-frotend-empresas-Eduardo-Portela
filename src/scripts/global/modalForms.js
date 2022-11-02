@@ -1,5 +1,5 @@
-import { renderDepartments } from "../dashBoardAdm/render.js"
-import { createDepartmentRequest, deleteDepartment, editDepartment, getAllDepartments, getFullCompanies } from "./requests.js"
+import { renderAllUsers, renderDepartments } from "../dashBoardAdm/render.js"
+import { createDepartmentRequest, deleteDepartment, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies } from "./requests.js"
 import { toast } from "./toast.js"
 
 const body = document.querySelector("body")
@@ -169,9 +169,75 @@ const deleteDepartmentForm = async({name, uuid}) => {
     return form
 }
 
+const editUserForm = async ({professional_level, kind_of_work, uuid}) => {
+
+
+    const form = document.createElement("form")
+    form.classList.add("edit-user-form")
+    
+    const title = document.createElement("h2")
+    title.innerText ="Editar Usuário"
+
+    const nivel = document.createElement("input")
+    nivel.setAttribute("placeholder",`${professional_level ? professional_level : "selecione nivel profissional"}`)
+    nivel.setAttribute("name","professional_level")
+    nivel.setAttribute("required","true")
+    
+    const kindOfWork = document.createElement("select")
+    const optionDefault = document.createElement("option")
+    optionDefault.innerText = kind_of_work ? kind_of_work : "selecione a modalidade de trabalho"
+
+    const option1 = document.createElement("option")
+    option1.value = "home office"
+    option1.innerText = "home office"
+
+    const option2 = document.createElement("option")
+    option2.value = "hibrido"
+    option2.innerText = "hibrido"
+
+    const option3 = document.createElement("option")
+    option3.value = "presencial"
+    option3.innerText = "presencial"
+
+    kindOfWork.setAttribute("name","kind_of_work")
+    kindOfWork.setAttribute("required","true")
+
+    kindOfWork.append(optionDefault,option1,option2,option3)
+
+    const buttonEdit = document.createElement("button")
+    buttonEdit.innerText = "Editar"
+
+    form.append(title, nivel, kindOfWork,buttonEdit)
+
+    form.addEventListener("submit", async(e) => {
+        e.preventDefault()
+
+        const userEdited = {}
+
+        const inputs = [...e.target]
+        inputs.forEach((input) => {
+            if(input.name){
+                userEdited[input.name] = input.value 
+            }
+        })
+
+        const backModal = e.path[2]
+
+        await editUser(userEdited, uuid)
+        const allUsers = await getAllUsers()
+        await renderAllUsers(allUsers)
+
+        backModal.remove()
+
+    })
+
+    return form
+}
+
 export {
     createModal,
     createDepartmentForm,
     editDepartmentForm,
-    deleteDepartmentForm
+    deleteDepartmentForm,
+    editUserForm
 }
