@@ -178,6 +178,24 @@ async function editDepartment(body1,uuid){
     }
 }
 
+async function deleteDepartment(uuid){
+    try {
+        const request = await fetch(`${baseUrl}/departments/${uuid}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+        if(request.ok){
+            toast("Sucesso!", "Departamento deletado com sucesso", "../assets/img/check.png")
+        }
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -187,4 +205,5 @@ export{
     createDepartmentRequest,
     getAllDepartments,
     editDepartment,
+    deleteDepartment
 }

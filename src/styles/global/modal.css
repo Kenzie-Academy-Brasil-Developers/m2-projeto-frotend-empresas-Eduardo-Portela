@@ -68,7 +68,7 @@
 /*modal edit department*/
 
 .form-edit h2{
-    
+    font-size: 36px;
 }
 
 .form-edit .edit-description{
@@ -77,9 +77,5 @@
     outline: none;
     padding: 10px;
     font-size: 16px;
-}
-
-.form-edit .edit-description::-webkit-input-placeholder{
-
 }
 
