@@ -193,6 +193,24 @@ async function deleteDepartment(uuid){
     }
 }
 
+async function getAllUsers(){
+    try {
+        const request = await fetch(`${baseUrl}/users`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+
+        const response = await request.json()
+
+        return response
+    } catch (error) {
+        console(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -202,5 +220,6 @@ export{
     createDepartmentRequest,
     getAllDepartments,
     editDepartment,
-    deleteDepartment
+    deleteDepartment,
+    getAllUsers,
 }
