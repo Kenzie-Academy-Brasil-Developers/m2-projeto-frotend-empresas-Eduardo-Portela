@@ -303,6 +303,29 @@ async function getInfosLogedUser(){
     }
 }
 
+async function editInfosLogedUser(body1){
+    try {
+        const request = await fetch(`${baseUrl}/users`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            },
+            body: JSON.stringify(body1)
+        })
+        if(request.ok){
+            const response = await request.json()
+            toast("Sucesso!", "Dados Alterados com sucesso", "../assets/img/check.png")
+            return response
+        }
+
+
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -319,5 +342,6 @@ export{
     getUmployedUsers,
     hireUser,
     getInfosLogedUser,
+    editInfosLogedUser,
 
 }

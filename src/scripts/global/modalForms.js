@@ -336,6 +336,8 @@ const modalViewDepartment = async (obj) => {
     return divAll
 }
 
+
+
 export {
     createModal,
     createDepartmentForm,
