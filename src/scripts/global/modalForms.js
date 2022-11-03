@@ -1,4 +1,4 @@
-import { renderAllUsers, renderDepartments } from "../dashBoardAdm/render.js"
+import { renderAllUsers, renderDepartments, renderUsersByDepartament } from "../dashBoardAdm/render.js"
 import { createDepartmentRequest, deleteDepartment, deleteUser, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies, getUmployedUsers } from "./requests.js"
 import { toast } from "./toast.js"
 
@@ -267,13 +267,13 @@ const deleteUserForm = async ({username, uuid}) => {
     }
 
 const modalViewDepartment = async (obj) => {
-    console.log(umployedUsers)
-    console.log(obj)
     const divAll = document.createElement("div")
     divAll.classList.add("divAll")
 
     const departName         = document.createElement("h2")
+    departName.classList.add("title-depart")
     departName.innerText     = `${obj.name}`
+    departName.id = `${obj.uuid}`
     
 
     const divDescription     = document.createElement("div")
@@ -320,6 +320,8 @@ const modalViewDepartment = async (obj) => {
     divSide.append(divDescription,divSelectHireUsers)
     
     divAll.append(departName,divSide)
+
+    await renderUsersByDepartament()
 
 
     return divAll

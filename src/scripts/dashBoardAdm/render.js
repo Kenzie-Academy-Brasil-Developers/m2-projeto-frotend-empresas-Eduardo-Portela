@@ -148,26 +148,31 @@ const renderUsersByDepartament = async () => {
 
     const listUsersDepart    = document.createElement("ul")
     listUsersDepart.classList.add("list-users-depart")
+    const getIdDepart = document.querySelector(".title-depart")
+    console.log(getIdDepart)
 
-    const userLi             = document.createElement("li")
-    userLi.classList.add("user-depart")
+    //allUsers.forEach((user)=> {
+        //console.log(user.uuid)
+        const userLi             = document.createElement("li")
+        userLi.classList.add("user-depart")
 
-    const username           = document.createElement("h4")
-    username.innerText       ="Username"
-    
-    const nivel              = document.createElement("p")
-    nivel.innerText          = "Pleno"
-    
-    const companyName        = document.createElement("p")
-    companyName.innerText    = "Company Name"
-    
-    const buttonDismiss      = document.createElement("button")
-    buttonDismiss.classList.add("button-dismiss")
-    buttonDismiss.innerText  = "Desligar"
+        const username           = document.createElement("h4")
+        username.innerText       ="Username"
+        
+        const nivel              = document.createElement("p")
+        nivel.innerText          = "Pleno"
+        
+        const companyName        = document.createElement("p")
+        companyName.innerText    = "Company Name"
+        
+        const buttonDismiss      = document.createElement("button")
+        buttonDismiss.classList.add("button-dismiss")
+        buttonDismiss.innerText  = "Desligar"
 
-    userLi.append(username,nivel,companyName,buttonDismiss)
-    listUsersDepart.appendChild(userLi)
+        userLi.append(username,nivel,companyName,buttonDismiss)
+        listUsersDepart.appendChild(userLi)
 
+    //})
     return listUsersDepart
 }
 
