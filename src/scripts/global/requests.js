@@ -313,10 +313,12 @@ async function editInfosLogedUser(body1){
             },
             body: JSON.stringify(body1)
         })
+        if(request.ok){
+            const response = await request.json()
+            toast("Sucesso!", "Dados Alterados com sucesso", "../assets/img/check.png")
+            return response
+        }
 
-        const response = await request.json()
-        
-        return response
 
         
     } catch (error) {
@@ -340,5 +342,6 @@ export{
     getUmployedUsers,
     hireUser,
     getInfosLogedUser,
+    editInfosLogedUser,
 
 }

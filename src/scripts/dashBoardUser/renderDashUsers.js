@@ -1,4 +1,5 @@
 import { getInfosLogedUser } from "../global/requests.js"
+import { createModal2, modalEditUserLoged } from "./modalFormEditUser.js"
 
 const infoUserLoged = await getInfosLogedUser()
 
@@ -11,6 +12,12 @@ const renderUserInfos = async () => {
     const profileNivel = document.createElement("p")
     const profileTypeWork = document.createElement("p")
     const profileButton = document.createElement("button")
+    profileButton.classList.add("edit-logued")
+
+    profileButton.addEventListener("click", async()=> {
+        const editUser = await modalEditUserLoged()
+        createModal2(editUser)
+    })
 
     profileUsername.innerText = `${infoUserLoged.username}`
     profileEmail.innerText = `${infoUserLoged.email}`
