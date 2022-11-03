@@ -2,7 +2,7 @@ import { getLocalStorage } from "./localStorage.js"
 import { toast } from "./toast.js"
 
 const baseUrl = "http://localhost:6278"
-const localToken = getLocalStorage("token")
+const localToken =  getLocalStorage("token")
 
 async function getSectors(){
     try{
@@ -85,6 +85,7 @@ async function loginRequest(body1){
             isAdmim()
 
         }else{
+            console.log(request.json())
             toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
         }
         
@@ -94,12 +95,13 @@ async function loginRequest(body1){
 }
 
 async function isAdmim(){
+    const localTokenV =  await getLocalStorage("token")
     try {
         const request = await fetch(`${baseUrl}/auth/validate_user`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${localToken.token}`
+                "Authorization": `Bearer ${localTokenV.token}`
             }
         })
         const response = await request.json()
@@ -284,6 +286,23 @@ async function hireUser(body1){
     }
 }
 
+async function getInfosLogedUser(){
+    try {
+        const request = await fetch(`${baseUrl}/users/profile`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer: ${localToken.token}`
+            }
+        })
+        const response = await request.json()
+        return response
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -299,4 +318,6 @@ export{
     deleteUser,
     getUmployedUsers,
     hireUser,
+    getInfosLogedUser,
+
 }
