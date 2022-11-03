@@ -223,7 +223,6 @@ async function editUser(body1,uuid){
         })
 
         const response = await request.json()
-        console.log(response)
         return response
         
     } catch (error) {
@@ -248,6 +247,43 @@ async function deleteUser(uuid){
     }
 }
 
+async function getUmployedUsers(){
+    const request = await fetch(`${baseUrl}/admin/out_of_work`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localToken.token}`
+        }
+    })
+
+    const response = await request.json()
+    return response
+}
+
+async function hireUser(body1){
+    try {
+        const request = await fetch(`${baseUrl}/departments/hire/`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            },
+            body: JSON.stringify(body1)
+        })
+
+        if(request.ok){
+            const response = await request.json()
+            toast("Sucesso!", "Usuario contratado com sucesso!", "../assets/img/check.png")
+            return response
+
+        }else{
+            console.log("Algo deu errado")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -261,4 +297,6 @@ export{
     getAllUsers,
     editUser,
     deleteUser,
+    getUmployedUsers,
+    hireUser,
 }

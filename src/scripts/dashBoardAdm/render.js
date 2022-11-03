@@ -45,10 +45,12 @@ const renderDepartments = async (list) => {
 
     const buttonView = document.createElement("button")
     buttonView.classList.add("view")
+    buttonView.id = `${department.uuid}`
 
     buttonView.addEventListener("click", async()=> {
-        const modalView = await modalViewDepartment()
-        createModal(modalView)
+        const modalView = await modalViewDepartment(department)
+        const modalList = await renderUsersByDepartament()
+        createModal(modalView,modalList)
     })
 
 
@@ -143,9 +145,56 @@ const renderAllUsers = async(list) => {
 
 }
 
+const renderUsersByDepartament = async () => {
+
+    const listUsersDepart    = document.createElement("ul")
+    listUsersDepart.innerHTML = ""
+    listUsersDepart.classList.add("list-users-depart")
+    let Departs = [...document.querySelectorAll(".view")]
+
+    let getIdDepart = ""
+    Departs.forEach((ele)=> {
+        ele.addEventListener("click",() => {
+
+            getIdDepart = ele.id        
+   
+    allUsers.forEach((user)=> {
+        //console.log(user.department_uuid)
+        if(user.department_uuid == getIdDepart){
+            console.log(user)
+            const userLi             = document.createElement("li")
+            userLi.classList.add("user-depart")
+
+            const username           = document.createElement("h4")
+            username.innerText       = `${user.username}`
+            
+            const nivel              = document.createElement("p")
+            nivel.innerText          = `${user.professional_level}`
+            
+            const companyName        = document.createElement("p")
+            companyName.innerText    = "Company Name"
+            
+            const buttonDismiss      = document.createElement("button")
+            buttonDismiss.classList.add("button-dismiss")
+            buttonDismiss.innerText  = "Desligar"
+
+            userLi.append(username,nivel,companyName,buttonDismiss)
+            listUsersDepart.appendChild(userLi)
+        }
+    })
+
+})
+})
+
+
+
+    return listUsersDepart
+}
+
 export {
     renderCompaniesOnSelect,
     renderDepartments,
     renderByCompany,
-    renderAllUsers
+    renderAllUsers,
+    renderUsersByDepartament
 }

@@ -1,11 +1,12 @@
-import { renderAllUsers, renderDepartments } from "../dashBoardAdm/render.js"
-import { createDepartmentRequest, deleteDepartment, deleteUser, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies } from "./requests.js"
+import { renderAllUsers, renderDepartments, renderUsersByDepartament } from "../dashBoardAdm/render.js"
+import { createDepartmentRequest, deleteDepartment, deleteUser, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies, getUmployedUsers, hireUser } from "./requests.js"
 import { toast } from "./toast.js"
 
 const body = document.querySelector("body")
+const umployedUsers = await getUmployedUsers()
 
 
-const createModal = (content) => {
+const createModal = (content,content2) => {
     const backGround = document.createElement("div")
     const modal = document.createElement("div")
     const buttonClose = document.createElement("button")
@@ -24,7 +25,7 @@ const createModal = (content) => {
     })
     
     modal.appendChild(buttonClose)
-    modal.appendChild(content)
+    modal.append(content,content2 ? content2 : "")
     backGround.appendChild(modal)
     
     body.appendChild(backGround)
@@ -265,13 +266,14 @@ const deleteUserForm = async ({username, uuid}) => {
 
     }
 
-const modalViewDepartment = async () => {
-
+const modalViewDepartment = async (obj) => {
     const divAll = document.createElement("div")
     divAll.classList.add("divAll")
 
     const departName         = document.createElement("h2")
-    departName.innerText     = "Nome do departamento"
+    departName.classList.add("title-depart")
+    departName.innerText     = `${obj.name}`
+    departName.id = `${obj.uuid}`
     
 
     const divDescription     = document.createElement("div")
@@ -282,52 +284,53 @@ const modalViewDepartment = async () => {
     divSide.classList.add("div-side")
 
     const departDescription  = document.createElement("p")
-    departDescription.innerText = "Descrição do departamento"
+    departDescription.innerText = `${obj.description}`
+
     const departCompany      = document.createElement("p")
-    departCompany.innerText  = "Empresa Pertencente"
+    departCompany.innerText  = `${obj.companies.name}`
 
     const divSelectHireUsers = document.createElement("div")
     divSelectHireUsers.classList.add("div-hire-users")
 
 
     const selectToHire       = document.createElement("select")
+    selectToHire.setAttribute("name", "user_uuid")
     selectToHire.classList.add("select-to-hire")
     
     const optionDefault      = document.createElement("option")
     selectToHire.appendChild(optionDefault)
     optionDefault.innerText  = "Selecionar usuario"
+
+    umployedUsers.forEach((user)=> {
+        const option = document.createElement("option")
+        option.innerText = `${user.username}`
+        option.value = `${user.uuid}`
+        selectToHire.appendChild(option)
+    })
    
     const buttonHire         = document.createElement("button")
     buttonHire.classList.add("button-hire")
     buttonHire.innerText = "Contratar"
 
+     buttonHire.addEventListener("click", async()=> {
+
+        const hireBody = {}
+        hireBody[selectToHire.name] = selectToHire.value
+        hireBody["department_uuid"] = obj.uuid
+
+        await hireUser(hireBody)
+        await renderUsersByDepartament()
+     })
 
 
-    const listUsersDepart    = document.createElement("ul")
-    listUsersDepart.classList.add("list-users-depart")
 
-    const userLi             = document.createElement("li")
-    userLi.classList.add("user-depart")
-
-    const username           = document.createElement("h4")
-    username.innerText       ="Username"
     
-    const nivel              = document.createElement("p")
-    nivel.innerText          = "Pleno"
-    
-    const companyName        = document.createElement("p")
-    companyName.innerText    = "Company Name"
-    
-    const buttonDismiss      = document.createElement("button")
-    buttonDismiss.classList.add("button-dismiss")
-    buttonDismiss.innerText  = "Desligar"
 
     divDescription.append(departDescription, departCompany)
     divSelectHireUsers.append(selectToHire,buttonHire)
     divSide.append(divDescription,divSelectHireUsers)
-    userLi.append(username,nivel,companyName,buttonDismiss)
-    listUsersDepart.appendChild(userLi)
-    divAll.append(departName,divSide,listUsersDepart)
+    
+    divAll.append(departName,divSide)
 
 
     return divAll
