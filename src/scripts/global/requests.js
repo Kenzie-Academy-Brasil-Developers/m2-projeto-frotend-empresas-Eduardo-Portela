@@ -303,6 +303,27 @@ async function getInfosLogedUser(){
     }
 }
 
+async function editInfosLogedUser(body1){
+    try {
+        const request = await fetch(`${baseUrl}/users`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            },
+            body: JSON.stringify(body1)
+        })
+
+        const response = await request.json()
+        
+        return response
+
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
