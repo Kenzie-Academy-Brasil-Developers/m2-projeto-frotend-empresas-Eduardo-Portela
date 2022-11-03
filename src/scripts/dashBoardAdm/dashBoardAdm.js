@@ -1,28 +1,13 @@
 import { getLocalStorage } from "../global/localStorage.js"
+import { logout } from "../global/logout.js"
 import { createDepartmentForm, createModal, editDepartmentForm } from "../global/modalForms.js"
 import { getAllDepartments, getAllUsers } from "../global/requests.js"
+import { verify } from "../global/verifyLocalStorage.js"
 import { renderAllUsers, renderByCompany, renderCompaniesOnSelect, renderDepartments } from "./render.js"
 
 const departments = await getAllDepartments()
 const allUsers = await getAllUsers()
-
-const verify = () => {
-    const user = getLocalStorage("token")
-    if(user == ""){
-        window.location.assign("../pages/login.html")
-    }
-}
-
 verify()
-
-const logout = () => {
-    const logout = document.getElementById("logout")
-    logout.addEventListener("click", ()=>{
-        localStorage.removeItem("token")
-        location.reload()
-    })
-}
-
 logout()
 
 const createDepartment = async () => {
