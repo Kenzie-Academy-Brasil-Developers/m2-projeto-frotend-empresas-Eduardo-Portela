@@ -177,6 +177,7 @@
     display: flex;
     overflow-x: scroll;
     gap: 16px;
+    width: 850px
 }
 .list-users-depart .user-depart{
     background-color: var(--white);

@@ -319,7 +319,7 @@ const modalViewDepartment = async (obj) => {
         hireBody["department_uuid"] = obj.uuid
 
         await hireUser(hireBody)
-
+        await renderUsersByDepartament()
      })
 
 

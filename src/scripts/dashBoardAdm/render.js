@@ -148,32 +148,46 @@ const renderAllUsers = async(list) => {
 const renderUsersByDepartament = async () => {
 
     const listUsersDepart    = document.createElement("ul")
+    listUsersDepart.innerHTML = ""
     listUsersDepart.classList.add("list-users-depart")
-    const getIdDepart = document.querySelector(".view")
-    console.log(getIdDepart)
+    let Departs = [...document.querySelectorAll(".view")]
 
-    //allUsers.forEach((user)=> {
-        //console.log(user.uuid)
-        const userLi             = document.createElement("li")
-        userLi.classList.add("user-depart")
+    let getIdDepart = ""
+    Departs.forEach((ele)=> {
+        ele.addEventListener("click",() => {
 
-        const username           = document.createElement("h4")
-        username.innerText       ="Username"
-        
-        const nivel              = document.createElement("p")
-        nivel.innerText          = "Pleno"
-        
-        const companyName        = document.createElement("p")
-        companyName.innerText    = "Company Name"
-        
-        const buttonDismiss      = document.createElement("button")
-        buttonDismiss.classList.add("button-dismiss")
-        buttonDismiss.innerText  = "Desligar"
+            getIdDepart = ele.id        
+   
+    allUsers.forEach((user)=> {
+        //console.log(user.department_uuid)
+        if(user.department_uuid == getIdDepart){
+            console.log(user)
+            const userLi             = document.createElement("li")
+            userLi.classList.add("user-depart")
 
-        userLi.append(username,nivel,companyName,buttonDismiss)
-        listUsersDepart.appendChild(userLi)
+            const username           = document.createElement("h4")
+            username.innerText       = `${user.username}`
+            
+            const nivel              = document.createElement("p")
+            nivel.innerText          = `${user.professional_level}`
+            
+            const companyName        = document.createElement("p")
+            companyName.innerText    = "Company Name"
+            
+            const buttonDismiss      = document.createElement("button")
+            buttonDismiss.classList.add("button-dismiss")
+            buttonDismiss.innerText  = "Desligar"
 
-    //})
+            userLi.append(username,nivel,companyName,buttonDismiss)
+            listUsersDepart.appendChild(userLi)
+        }
+    })
+
+})
+})
+
+
+
     return listUsersDepart
 }
 
