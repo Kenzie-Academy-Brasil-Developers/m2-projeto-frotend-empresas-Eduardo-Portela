@@ -276,6 +276,8 @@ async function hireUser(body1){
             toast("Sucesso!", "Usuario contratado com sucesso!", "../assets/img/check.png")
             return response
 
+        }else{
+            console.log("Algo deu errado")
         }
     } catch (error) {
         console.log(error)
@@ -296,4 +298,5 @@ export{
     editUser,
     deleteUser,
     getUmployedUsers,
+    hireUser,
 }

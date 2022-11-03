@@ -1,5 +1,5 @@
 import { renderAllUsers, renderDepartments, renderUsersByDepartament } from "../dashBoardAdm/render.js"
-import { createDepartmentRequest, deleteDepartment, deleteUser, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies, getUmployedUsers } from "./requests.js"
+import { createDepartmentRequest, deleteDepartment, deleteUser, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies, getUmployedUsers, hireUser } from "./requests.js"
 import { toast } from "./toast.js"
 
 const body = document.querySelector("body")
@@ -294,6 +294,7 @@ const modalViewDepartment = async (obj) => {
 
 
     const selectToHire       = document.createElement("select")
+    selectToHire.setAttribute("name", "user_uuid")
     selectToHire.classList.add("select-to-hire")
     
     const optionDefault      = document.createElement("option")
@@ -311,6 +312,16 @@ const modalViewDepartment = async (obj) => {
     buttonHire.classList.add("button-hire")
     buttonHire.innerText = "Contratar"
 
+     buttonHire.addEventListener("click", async()=> {
+
+        const hireBody = {}
+        hireBody[selectToHire.name] = selectToHire.value
+        hireBody["department_uuid"] = obj.uuid
+
+        await hireUser(hireBody)
+
+     })
+
 
 
     
@@ -320,8 +331,6 @@ const modalViewDepartment = async (obj) => {
     divSide.append(divDescription,divSelectHireUsers)
     
     divAll.append(departName,divSide)
-
-    await renderUsersByDepartament()
 
 
     return divAll

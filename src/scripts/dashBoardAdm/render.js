@@ -45,6 +45,7 @@ const renderDepartments = async (list) => {
 
     const buttonView = document.createElement("button")
     buttonView.classList.add("view")
+    buttonView.id = `${department.uuid}`
 
     buttonView.addEventListener("click", async()=> {
         const modalView = await modalViewDepartment(department)
@@ -148,7 +149,7 @@ const renderUsersByDepartament = async () => {
 
     const listUsersDepart    = document.createElement("ul")
     listUsersDepart.classList.add("list-users-depart")
-    const getIdDepart = document.querySelector(".title-depart")
+    const getIdDepart = document.querySelector(".view")
     console.log(getIdDepart)
 
     //allUsers.forEach((user)=> {
