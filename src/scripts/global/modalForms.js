@@ -264,6 +264,75 @@ const deleteUserForm = async ({username, uuid}) => {
     return form
 
     }
+
+const modalViewDepartment = async () => {
+
+    const divAll = document.createElement("div")
+    divAll.classList.add("divAll")
+
+    const departName         = document.createElement("h2")
+    departName.innerText     = "Nome do departamento"
+    
+
+    const divDescription     = document.createElement("div")
+    divDescription.classList.add("div-description")
+
+
+    const divSide = document.createElement("div")
+    divSide.classList.add("div-side")
+
+    const departDescription  = document.createElement("p")
+    departDescription.innerText = "Descrição do departamento"
+    const departCompany      = document.createElement("p")
+    departCompany.innerText  = "Empresa Pertencente"
+
+    const divSelectHireUsers = document.createElement("div")
+    divSelectHireUsers.classList.add("div-hire-users")
+
+
+    const selectToHire       = document.createElement("select")
+    selectToHire.classList.add("select-to-hire")
+    
+    const optionDefault      = document.createElement("option")
+    selectToHire.appendChild(optionDefault)
+    optionDefault.innerText  = "Selecionar usuario"
+   
+    const buttonHire         = document.createElement("button")
+    buttonHire.classList.add("button-hire")
+    buttonHire.innerText = "Contratar"
+
+
+
+    const listUsersDepart    = document.createElement("ul")
+    listUsersDepart.classList.add("list-users-depart")
+
+    const userLi             = document.createElement("li")
+    userLi.classList.add("user-depart")
+
+    const username           = document.createElement("h4")
+    username.innerText       ="Username"
+    
+    const nivel              = document.createElement("p")
+    nivel.innerText          = "Pleno"
+    
+    const companyName        = document.createElement("p")
+    companyName.innerText    = "Company Name"
+    
+    const buttonDismiss      = document.createElement("button")
+    buttonDismiss.classList.add("button-dismiss")
+    buttonDismiss.innerText  = "Desligar"
+
+    divDescription.append(departDescription, departCompany)
+    divSelectHireUsers.append(selectToHire,buttonHire)
+    divSide.append(divDescription,divSelectHireUsers)
+    userLi.append(username,nivel,companyName,buttonDismiss)
+    listUsersDepart.appendChild(userLi)
+    divAll.append(departName,divSide,listUsersDepart)
+
+
+    return divAll
+}
+
 export {
     createModal,
     createDepartmentForm,
@@ -271,4 +340,5 @@ export {
     deleteDepartmentForm,
     editUserForm,
     deleteUserForm,
+    modalViewDepartment,
 }

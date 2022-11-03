@@ -112,3 +112,98 @@
 .edit-user-form input::placeholder{
     color: var(--black);
 }
+
+/*Modal view depart*/
+.divAll{
+    width: 857px;
+    padding: 16px;
+}
+
+.divAll h2{
+    font-size: 36px;
+}
+
+.div-description{
+    margin-top: 31px;
+}
+
+.div-description :nth-child(1){
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 11px;
+}
+
+.div-description :nth-child(2){
+    font-size: 20px;
+}
+
+.div-side{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-to-hire{
+    width: 422px;
+    height: 52px;
+    outline: none;
+    border: 1px solid var(--grey-6);
+    padding-left: 16px;
+    color: var(--grey-4);
+}
+
+.div-hire-users{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    margin-top: 50px;
+}
+
+.div-hire-users .button-hire{
+    width: 157px;
+    height: 48px;
+    background-color: var(--sucess);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+}
+
+.list-users-depart{
+    margin-top: 51px;
+    background-color: var(--grey-7);
+    padding: 32px;
+    height: 290px;
+    display: flex;
+    overflow-x: scroll;
+    gap: 16px;
+}
+.list-users-depart .user-depart{
+    background-color: var(--white);
+    width: 306px;
+    padding: 32px;
+}
+
+.user-depart :nth-child(1){
+    font-size: 20px;
+}
+
+.user-depart :nth-child(2){
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.user-depart :nth-child(3){
+    font-size: 18px;
+}
+
+.user-depart :nth-child(4){
+    margin-top: 16px;
+    margin-left: 50px;
+    background-color: transparent;
+    border: 1px solid var(--error);
+    color: var(--error);
+    width: 157px;
+    height: 48px;
+
+}
