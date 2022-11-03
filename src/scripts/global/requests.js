@@ -223,7 +223,6 @@ async function editUser(body1,uuid){
         })
 
         const response = await request.json()
-        console.log(response)
         return response
         
     } catch (error) {
@@ -248,6 +247,19 @@ async function deleteUser(uuid){
     }
 }
 
+async function getUmployedUsers(){
+    const request = await fetch(`${baseUrl}/admin/out_of_work`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localToken.token}`
+        }
+    })
+
+    const response = await request.json()
+    return response
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -261,4 +273,5 @@ export{
     getAllUsers,
     editUser,
     deleteUser,
+    getUmployedUsers,
 }

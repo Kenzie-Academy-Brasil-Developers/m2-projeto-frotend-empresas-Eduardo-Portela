@@ -47,8 +47,9 @@ const renderDepartments = async (list) => {
     buttonView.classList.add("view")
 
     buttonView.addEventListener("click", async()=> {
-        const modalView = await modalViewDepartment()
-        createModal(modalView)
+        const modalView = await modalViewDepartment(department)
+        const modalList = await renderUsersByDepartament()
+        createModal(modalView,modalList)
     })
 
 
@@ -143,9 +144,37 @@ const renderAllUsers = async(list) => {
 
 }
 
+const renderUsersByDepartament = async () => {
+
+    const listUsersDepart    = document.createElement("ul")
+    listUsersDepart.classList.add("list-users-depart")
+
+    const userLi             = document.createElement("li")
+    userLi.classList.add("user-depart")
+
+    const username           = document.createElement("h4")
+    username.innerText       ="Username"
+    
+    const nivel              = document.createElement("p")
+    nivel.innerText          = "Pleno"
+    
+    const companyName        = document.createElement("p")
+    companyName.innerText    = "Company Name"
+    
+    const buttonDismiss      = document.createElement("button")
+    buttonDismiss.classList.add("button-dismiss")
+    buttonDismiss.innerText  = "Desligar"
+
+    userLi.append(username,nivel,companyName,buttonDismiss)
+    listUsersDepart.appendChild(userLi)
+
+    return listUsersDepart
+}
+
 export {
     renderCompaniesOnSelect,
     renderDepartments,
     renderByCompany,
-    renderAllUsers
+    renderAllUsers,
+    renderUsersByDepartament
 }
