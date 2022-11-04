@@ -326,6 +326,39 @@ async function editInfosLogedUser(body1){
     }
 }
 
+async function getCoworkers(){
+    try {
+        const request = await fetch(`${baseUrl}/users/departments/coworkers`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+
+        if(request.ok){
+            const response = await request.json()
+            return response
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function getCompanyByUuid(uuid){
+    const companies = await getFullCompanies()
+    let company = {}
+    companies.forEach(element => {
+        if(element.uuid == uuid){
+            company = element
+
+        }
+    });
+
+    return company
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -343,5 +376,8 @@ export{
     hireUser,
     getInfosLogedUser,
     editInfosLogedUser,
+    getCoworkers,
+    getCompanyByUuid,
+    
 
 }

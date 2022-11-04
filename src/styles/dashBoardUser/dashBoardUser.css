@@ -59,7 +59,6 @@ header{
     align-items: center;
     color: var(--white);
     font-size: 32px;
-    display: none;
 }
 
 .coworks-list{
@@ -77,7 +76,7 @@ header{
     background-color: var(--white);
     border: 1px solid var(--brand-1);
     padding: 12px;
-    display: none;
+
 }
 
 .cowork :nth-child(1){
@@ -93,4 +92,5 @@ header{
     width: 100%;
     font-size: 40px;
     font-weight: bolder;
+
 }
