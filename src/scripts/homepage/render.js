@@ -12,7 +12,6 @@ async function render(){
     const select = document.getElementById("select-setor")
 
     getSector.forEach(element => {
-        console.log(element)
     const option = document.createElement("option")
     option.setAttribute("value", `${element.description}`)
     option.innerText = `${element.description}`
