@@ -5,6 +5,6 @@ export const logout = () => {
     logout.addEventListener("click", ()=>{
         localStorage.removeItem("token")
         verify()
-        window.location.assign("../../../index.html")
+        window.location.assign("../../index.html")
     })
 }
