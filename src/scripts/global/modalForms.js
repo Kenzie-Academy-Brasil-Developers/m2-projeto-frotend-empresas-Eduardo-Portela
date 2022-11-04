@@ -319,7 +319,10 @@ const modalViewDepartment = async (obj) => {
         hireBody["department_uuid"] = obj.uuid
 
         await hireUser(hireBody)
-        location.reload()
+        setTimeout(()=> {
+            location.reload()
+
+        }, 4000)
      })
 
 
