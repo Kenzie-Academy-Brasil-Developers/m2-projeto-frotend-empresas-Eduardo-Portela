@@ -326,6 +326,26 @@ async function editInfosLogedUser(body1){
     }
 }
 
+async function getCoworkers(){
+    try {
+        const request = await fetch(`${baseUrl}/users/departments/coworkers`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${localToken.token}`
+            }
+        })
+
+        if(request.ok){
+            const response = await request.json()
+            return response
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
