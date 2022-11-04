@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/global/globalStyles.css">
+    <link rel="stylesheet" href="../styles/global/header.css">
+    <link rel="stylesheet" href="../styles/login/login.css">
+    <link rel="stylesheet" href="../styles/login/media-login.css">
+    <link rel="stylesheet" href="../styles/global/toast.css">
+
+
+
     <title>Login-Page</title>
 </head>
 <body>
@@ -19,23 +27,24 @@
                 </div>
             </div>
             <div class="div-buttons ">
-                <a href="src/pages/login.html"><button class="btn-login">Pagina Inicial</button></a>
-                <a href="src/pages/register.html"><button class="btn-register">Cadastro</button></a>
+                <a href="../../index.html"><button class="btn-login">Pagina Inicial</button></a>
+                <a href="../../src/pages/register.html"><button class="btn-register">Cadastro</button></a>
             </div>
         </div>
     </header>
     <main>
        <div class="box-login">
-           <form action="">
+           <form id ="form-login" action="">
             <h2>Login</h2>
             <p>Preencha os campos para realizar login</p>
-            <input name="email" type="email">
-            <input name="password" type="password">
-            <button type="submit">Login</button>
+            <input name="email" type="email" placeholder="Seu e-mail">
+            <input name="password" type="password" placeholder="Sua senha">
+            <button id="login" type="submit">Login</button>
            </form>
-           <span>ou</span>
-           <button class="register"> Cadastre-se</button>
+           <p>ou</p>
+           <a href="register.html"><button id="btn-register" class="register"> Cadastre-se</button></a>
        </div>
     </main>
+    <script type="module" src="../scripts/login/login.js"></script>
 </body>
 </html>

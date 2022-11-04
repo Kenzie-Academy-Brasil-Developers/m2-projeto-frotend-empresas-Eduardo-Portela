@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     list-style: none;
+    text-decoration: none;
 }
 
 button{
@@ -36,6 +37,11 @@ button{
 
 .container{
     width: 92%;
+    margin: 0 auto;
+}
+
+.container-dash{
+    width: 1182px;
     margin: 0 auto;
 }
 

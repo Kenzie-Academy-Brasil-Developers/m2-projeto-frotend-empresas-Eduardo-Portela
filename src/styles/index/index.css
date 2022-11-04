@@ -1,0 +1,52 @@
+.div-img-home{
+    display: none;
+}
+
+.select-by-setor{
+    box-shadow: 1px 1px 16px var(--grey-4);
+}
+
+.select-by-setor #select-setor{
+    width: 100%;
+    height: 52px;
+    text-align: center;
+    background-color: var(--brand-1);
+    color: var(--white);
+    font-size: var(--font-size-5);
+    outline:none;
+    
+}
+
+.list-companies{
+    background-color: var(--grey-6);
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+.list-companies .company{
+    min-width: 241px;
+    background-color: var(--white);
+    padding: 16px;
+    border-bottom: 2px solid var(--brand-1)
+}
+
+.list-companies .company h3{
+    margin-bottom: 74px;
+}
+.list-companies .company p{
+    margin-bottom: 16px;
+}
+.list-companies .company span{
+    padding: 8px 15px;
+    width: 73px;
+    border-radius: 255px;
+    height: 32px;
+    border: 1px solid var(--brand-1);
+    background-color: transparent;
+    color: var(--brand-1);
+    font-weight: 600;
+}
+

@@ -1,0 +1,96 @@
+header{
+    margin-bottom: 40px;
+}
+
+.header{
+    margin: 0;
+    justify-content: space-between;
+    width: auto;
+}
+
+.div-logout #logout{
+    width: 142px;
+    height: 48px;
+    border: 1px solid var(--brand-1);
+    background-color: transparent;
+    color: var(--brand-1);
+    font-size: var(--font-size-4);
+    font-weight: 600;
+}
+
+.user-settings{
+    border: 1px solid var(--grey-6);
+    padding: 16px;    
+    position: relative;
+}
+.user-settings h2{
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+
+.profile-info{
+    display: flex;
+    gap: 96px;
+    font-size: 22px;
+}
+
+.user-settings .edit{
+    position: absolute;
+    right: 0;
+    top: 40%;
+    background-image: url(../../assets/img/pen-color.png);
+    width: 44px;
+    height: 33px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+}
+
+.job-info{
+   margin: 55px 0; 
+}
+
+.company-info{
+    display: flex;
+    gap: 5px;
+    height: 78px;
+    background-color: var(--brand-1);
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 32px;
+}
+
+.coworks-list{
+    background-color: var(--grey-6);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 54px;
+    min-height: 389px;
+    padding: 32px;
+}
+
+.cowork{
+    width: 318px;
+    height: 76px;
+    background-color: var(--white);
+    border: 1px solid var(--brand-1);
+    padding: 12px;
+
+}
+
+.cowork :nth-child(1){
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.unemployed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 40px;
+    font-weight: bolder;
+
+}

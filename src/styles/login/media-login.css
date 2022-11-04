@@ -1,0 +1,52 @@
+@media (min-width: 800px){
+    header{
+        display: flex;
+        align-items: center;
+        height: 10vh;
+    }
+
+    main{
+        height: 90vh;
+    }
+
+    .cover-header{
+        width: 70%;  
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .header{
+        margin-bottom: 0;
+    }
+    .container{
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .div-img-home{
+        display: block;
+    }
+    .select-by-setor{
+        width: 500px;
+    }
+
+    .list-companies{
+        flex-direction: column;
+        height: 692px;
+    }
+
+    .div-ham{
+        display: none;
+    }
+
+    .div-buttons{
+        display: flex;
+        width: fit-content;
+        justify-content: flex-end;
+        position: static;
+        box-shadow: none;
+        gap: 16px;
+        animation: none;
+    }
+}

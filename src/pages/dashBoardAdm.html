@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/global/globalStyles.css">
+    <link rel="stylesheet" href="../styles/global/header.css">
+    <link rel="stylesheet" href="../styles/DashBoardAdm/dashBoardAdm.css">
+    <link rel="stylesheet" href="../styles/global/modal.css">
+    <link rel="stylesheet" href="../styles/global/toast.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        <div class="cover-header container-dash">
+            <div class="header">
+                <div class="div-logo ">
+                    <img src="../assets/img/logo-kenzie.png" alt="Logo-kenzie">
+                    <h4>Kenzie Empresas</h4>
+                </div>
+                <div class="div-logout">
+                    <button id="logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-dash">
+        <div class="departmens">
+            <h2>Departamentos</h2>
+            <select name="select-company" id="select-company">
+                <option value="">Selecionar Empresa</option>
+            </select>
+
+            <button class="create-department cancel"><img src="../assets/img/plus.png" alt=""> Criar</button>
+        </div>
+        <ul class="department-list">
+           
+        </ul>
+
+        <div class="title-second-list">
+            <h2>Usuários Cadastrados</h2>
+        </div>
+
+        <ul class="user-list">
+            
+        </ul>
+
+    </main>
+
+    <script type="module" src="../scripts/dashBoardAdm/dashBoardAdm.js"></script>
+</body>
+</html>
