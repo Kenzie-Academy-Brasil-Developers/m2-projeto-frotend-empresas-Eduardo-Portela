@@ -1,5 +1,5 @@
 import { createModal, deleteDepartmentForm, deleteUserForm, editDepartmentForm, editUserForm, modalViewDepartment } from "../global/modalForms.js";
-import { editDepartment, getAllDepartments, getAllUsers, getCompanyByUuid, getFullCompanies } from "../global/requests.js";
+import { dismissWorker, editDepartment, getAllDepartments, getAllUsers, getCompanyByUuid, getFullCompanies } from "../global/requests.js";
 
 const departments = await getAllDepartments()
 const allUsers = await getAllUsers()
@@ -77,13 +77,30 @@ const renderDepartments = async (list) => {
                     
                     const nivel              = document.createElement("p")
                     nivel.innerText          = `${user.professional_level}`
-                    
-                    const companyName        = document.createElement("p")
-                    companyName.innerText    = "Company Name"
+
+                    let companyName        = document.createElement("p")
+
+                    if(user.department_uuid){
+                        departments.forEach(async(depart) => {
+                            if(user.department_uuid == depart.uuid){
+                                companyName.innerText = await depart.companies.name
+                                console.log(companyName)
+                            }
+                        })
+                    }
                     
                     const buttonDismiss      = document.createElement("button")
                     buttonDismiss.classList.add("button-dismiss")
                     buttonDismiss.innerText  = "Desligar"
+                    buttonDismiss.id = `${user.uuid}`
+
+                    buttonDismiss.addEventListener("click", async() => {
+
+                        await dismissWorker(buttonDismiss.id)
+                        setTimeout(()=> {
+                            location.reload()
+                        },4000)
+                    })
         
                     userLi.append(username,nivel,companyName,buttonDismiss)
                     listUsersDepart.appendChild(userLi)

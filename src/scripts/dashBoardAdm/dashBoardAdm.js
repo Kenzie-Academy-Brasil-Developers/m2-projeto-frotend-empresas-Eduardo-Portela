@@ -18,6 +18,13 @@ const createDepartment = async () => {
     })
 }
 
+// const dismissWorker = async () => {
+//     const buttonsDismiss = document.querySelectorAll(".button-dismiss")
+//     console.log(buttonsDismiss)
+// }
+
+// dismissWorker()
+
 renderDepartments(departments)
 createDepartment()
 renderCompaniesOnSelect()
