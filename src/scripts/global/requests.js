@@ -136,6 +136,9 @@ async function createDepartmentRequest(body1){
             toast("Sucesso!", "Departamento cadastrado com sucesso", "../assets/img/check.png" )
         const response = await request.json()
         return response
+    }else{
+        console.log(request.json())
+        toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
     }
         
     } catch (error) {
@@ -171,9 +174,16 @@ async function editDepartment(body1,uuid){
             },
             body: JSON.stringify(body1) 
         })
+
+        if(request.ok){
+            const response = await request.json()
+            toast("Sucesso!", "Departamento editado com sucesso", "../assets/img/check.png")
+            return response
+        }else{
+            console.log(request.json())
+            toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
+        }
         
-        const response = await request.json()
-        return response
 
     } catch (error) {
         console.log(error)
@@ -224,9 +234,14 @@ async function editUser(body1,uuid){
             body: JSON.stringify(body1)
         })
 
-        const response = await request.json()
-        return response
-        
+        if(request.ok){
+            const response = await request.json()
+            toast("Sucesso!", "Usuário editado com sucesso", "../assets/img/check.png")
+            return response
+        }else{
+            console.log(request.json())
+            toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
+        }
     } catch (error) {
         console.log(error)
         

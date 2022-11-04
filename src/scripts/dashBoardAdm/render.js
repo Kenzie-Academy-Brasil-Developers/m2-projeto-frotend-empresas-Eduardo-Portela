@@ -1,5 +1,5 @@
 import { createModal, deleteDepartmentForm, deleteUserForm, editDepartmentForm, editUserForm, modalViewDepartment } from "../global/modalForms.js";
-import { editDepartment, getAllDepartments, getAllUsers, getFullCompanies } from "../global/requests.js";
+import { editDepartment, getAllDepartments, getAllUsers, getCompanyByUuid, getFullCompanies } from "../global/requests.js";
 
 const departments = await getAllDepartments()
 const allUsers = await getAllUsers()
@@ -99,7 +99,7 @@ const renderAllUsers = async(list) => {
     const listUsers = document.querySelector(".user-list")
     listUsers.innerHTML = ""
 
-    list.forEach((user) => {
+    list.forEach(async (user) => {
 
         if(!user.is_admin){
 
@@ -113,9 +113,19 @@ const renderAllUsers = async(list) => {
             nivel.innerText = `${user.professional_level}`
 
             const company = document.createElement("p")
+            let companyName = ""
+
+            if(user.department_uuid){
+                departments.forEach((depart) => {
+                    if(user.department_uuid == depart.uuid){
+                        companyName = depart.companies.name
+                    }
+                })
+                company.innerText = `${companyName}`
+            }
 
             const kindOfWork = document.createElement("p")
-            kindOfWork.innerText = `${user.kind_of_work}`
+            kindOfWork.innerText = `${user.kind_of_work ? user.kind_of_work : ""}`
 
             const divFunctionUser = document.createElement("div")
             divFunctionUser.classList.add("function-user")
@@ -137,7 +147,7 @@ const renderAllUsers = async(list) => {
             })
 
             divFunctionUser.append(buttonEditUser, buttonDeleteUser)
-            userLI.append(userName,nivel,kindOfWork, divFunctionUser)
+            userLI.append(userName,nivel,kindOfWork, company, divFunctionUser)
             
             listUsers.appendChild(userLI)
         }
