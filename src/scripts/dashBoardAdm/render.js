@@ -10,6 +10,7 @@ const renderCompaniesOnSelect = async () => {
     const select = document.querySelector("#select-company")
     
     companies.forEach(company => {
+        console.log(company)
         const option = document.createElement("option")
         option.innerText = company.name
         option.value = company.name

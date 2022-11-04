@@ -406,7 +406,7 @@ async function listCompaniesBySector(sector){
             }
         })
         const response = await request.json()
-        
+
         return response
     } catch (error) {
         console.log(error)
@@ -433,5 +433,6 @@ export{
     getCoworkers,
     getCompanyByUuid,
     dismissWorker,
+    listCompaniesBySector,
 
 }
