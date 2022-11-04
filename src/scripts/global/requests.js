@@ -374,6 +374,29 @@ async function getCompanyByUuid(uuid){
     return company
 }
 
+async function dismissWorker(uuid){
+    try {
+        const request = await fetch(`${baseUrl}/departments/dismiss/${uuid}`,{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+        if(request.ok){
+            toast("Sucesso!", "Funcionario demitido com sucesso", "../assets/img/check.png")
+            const response = await request.json()
+            return response
+        }else{
+            toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
+        }
+
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
@@ -393,6 +416,6 @@ export{
     editInfosLogedUser,
     getCoworkers,
     getCompanyByUuid,
-    
+    dismissWorker,
 
 }
