@@ -1,4 +1,4 @@
-import { renderAllUsers, renderDepartments, renderUsersByDepartament } from "../dashBoardAdm/render.js"
+import { renderAllUsers, renderDepartments,} from "../dashBoardAdm/render.js"
 import { createDepartmentRequest, deleteDepartment, deleteUser, editDepartment, editUser, getAllDepartments, getAllUsers, getFullCompanies, getUmployedUsers, hireUser } from "./requests.js"
 import { toast } from "./toast.js"
 
@@ -319,7 +319,7 @@ const modalViewDepartment = async (obj) => {
         hireBody["department_uuid"] = obj.uuid
 
         await hireUser(hireBody)
-        await renderUsersByDepartament()
+        location.reload()
      })
 
 
