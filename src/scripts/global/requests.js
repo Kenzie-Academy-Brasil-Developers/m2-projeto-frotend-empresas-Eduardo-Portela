@@ -332,7 +332,7 @@ async function getCoworkers(){
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `${localToken.token}`
+                "Authorization": `Bearer ${localToken.token}`
             }
         })
 
@@ -344,6 +344,19 @@ async function getCoworkers(){
     } catch (error) {
         console.log(error)
     }
+}
+
+async function getCompanyByUuid(uuid){
+    const companies = await getFullCompanies()
+    let company = {}
+    companies.forEach(element => {
+        if(element.uuid == uuid){
+            company = element
+
+        }
+    });
+
+    return company
 }
 
 export{
@@ -363,5 +376,8 @@ export{
     hireUser,
     getInfosLogedUser,
     editInfosLogedUser,
+    getCoworkers,
+    getCompanyByUuid,
+    
 
 }
