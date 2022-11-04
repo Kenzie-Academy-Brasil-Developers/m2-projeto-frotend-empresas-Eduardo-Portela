@@ -121,6 +121,22 @@ async function isAdmim(){
     }
 }
 
+async function listDepartmentsByCompany(uuid){
+    try {
+        const request = await fetch(`${baseUrl}/departments/${uuid}`,{
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${localToken.token}`
+            }
+        })
+        const response = await request.json()
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 async function createDepartmentRequest(body1){
 
     try {
@@ -434,5 +450,6 @@ export{
     getCompanyByUuid,
     dismissWorker,
     listCompaniesBySector,
+    listDepartmentsByCompany,
 
 }
