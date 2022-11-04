@@ -105,10 +105,9 @@ async function isAdmim(){
             }
         })
         const response = await request.json()
-        console.log(response)
         if(response.is_admin){
             setTimeout(()=> {
-                window.location.assign("../pages/dashboardAdm.html")
+                window.location.assign("../pages/dashBoardAdm.html")
             }, 4000)
         }else if(!response.is_admin){
             setTimeout(()=> {
