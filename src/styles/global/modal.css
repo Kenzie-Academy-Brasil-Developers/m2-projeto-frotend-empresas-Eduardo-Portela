@@ -208,3 +208,12 @@
     height: 48px;
 
 }
+
+.empty-depart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bolder;
+}

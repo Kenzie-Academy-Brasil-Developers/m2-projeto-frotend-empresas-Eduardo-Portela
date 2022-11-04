@@ -1,5 +1,5 @@
 import { createModal, deleteDepartmentForm, deleteUserForm, editDepartmentForm, editUserForm, modalViewDepartment } from "../global/modalForms.js";
-import { editDepartment, getAllDepartments, getAllUsers, getFullCompanies } from "../global/requests.js";
+import { editDepartment, getAllDepartments, getAllUsers, getCompanyByUuid, getFullCompanies } from "../global/requests.js";
 
 const departments = await getAllDepartments()
 const allUsers = await getAllUsers()
@@ -48,9 +48,61 @@ const renderDepartments = async (list) => {
     buttonView.id = `${department.uuid}`
 
     buttonView.addEventListener("click", async()=> {
+        let getIdDepart = ""
+        getIdDepart =  buttonView.id  
+
+        const renderUsersByDepartament = async () => {
+
+            const emptyDepart = document.createElement("li")
+            emptyDepart.classList.add("empty-depart")
+
+            const descEmptyDepart = document.createElement("p")
+            descEmptyDepart.innerText = "Ninguem foi contratado neste departamento ainda"
+            emptyDepart.appendChild(descEmptyDepart)
+
+
+
+            const listUsersDepart    = document.createElement("ul")
+            listUsersDepart.innerHTML = ""
+            listUsersDepart.classList.add("list-users-depart")
+        
+            allUsers.forEach((user)=> {
+        
+                if(user.department_uuid == getIdDepart){
+                    const userLi             = document.createElement("li")
+                    userLi.classList.add("user-depart")
+        
+                    const username           = document.createElement("h4")
+                    username.innerText       = `${user.username}`
+                    
+                    const nivel              = document.createElement("p")
+                    nivel.innerText          = `${user.professional_level}`
+                    
+                    const companyName        = document.createElement("p")
+                    companyName.innerText    = "Company Name"
+                    
+                    const buttonDismiss      = document.createElement("button")
+                    buttonDismiss.classList.add("button-dismiss")
+                    buttonDismiss.innerText  = "Desligar"
+        
+                    userLi.append(username,nivel,companyName,buttonDismiss)
+                    listUsersDepart.appendChild(userLi)
+                }
+        
+        })
+        if(listUsersDepart.children.length == 0){
+            listUsersDepart.appendChild(emptyDepart)
+
+        }
+
+            return listUsersDepart
+        }
+        
+
         const modalView = await modalViewDepartment(department)
         const modalList = await renderUsersByDepartament()
         createModal(modalView,modalList)
+
     })
 
 
@@ -99,7 +151,7 @@ const renderAllUsers = async(list) => {
     const listUsers = document.querySelector(".user-list")
     listUsers.innerHTML = ""
 
-    list.forEach((user) => {
+    list.forEach(async (user) => {
 
         if(!user.is_admin){
 
@@ -113,9 +165,19 @@ const renderAllUsers = async(list) => {
             nivel.innerText = `${user.professional_level}`
 
             const company = document.createElement("p")
+            let companyName = ""
+
+            if(user.department_uuid){
+                departments.forEach((depart) => {
+                    if(user.department_uuid == depart.uuid){
+                        companyName = depart.companies.name
+                    }
+                })
+                company.innerText = `${companyName}`
+            }
 
             const kindOfWork = document.createElement("p")
-            kindOfWork.innerText = `${user.kind_of_work}`
+            kindOfWork.innerText = `${user.kind_of_work ? user.kind_of_work : ""}`
 
             const divFunctionUser = document.createElement("div")
             divFunctionUser.classList.add("function-user")
@@ -137,7 +199,7 @@ const renderAllUsers = async(list) => {
             })
 
             divFunctionUser.append(buttonEditUser, buttonDeleteUser)
-            userLI.append(userName,nivel,kindOfWork, divFunctionUser)
+            userLI.append(userName,nivel,kindOfWork, company, divFunctionUser)
             
             listUsers.appendChild(userLI)
         }
@@ -145,56 +207,9 @@ const renderAllUsers = async(list) => {
 
 }
 
-const renderUsersByDepartament = async () => {
-
-    const listUsersDepart    = document.createElement("ul")
-    listUsersDepart.innerHTML = ""
-    listUsersDepart.classList.add("list-users-depart")
-    let Departs = [...document.querySelectorAll(".view")]
-
-    let getIdDepart = ""
-    Departs.forEach((ele)=> {
-        ele.addEventListener("click",() => {
-
-            getIdDepart = ele.id        
-   
-    allUsers.forEach((user)=> {
-        //console.log(user.department_uuid)
-        if(user.department_uuid == getIdDepart){
-            console.log(user)
-            const userLi             = document.createElement("li")
-            userLi.classList.add("user-depart")
-
-            const username           = document.createElement("h4")
-            username.innerText       = `${user.username}`
-            
-            const nivel              = document.createElement("p")
-            nivel.innerText          = `${user.professional_level}`
-            
-            const companyName        = document.createElement("p")
-            companyName.innerText    = "Company Name"
-            
-            const buttonDismiss      = document.createElement("button")
-            buttonDismiss.classList.add("button-dismiss")
-            buttonDismiss.innerText  = "Desligar"
-
-            userLi.append(username,nivel,companyName,buttonDismiss)
-            listUsersDepart.appendChild(userLi)
-        }
-    })
-
-})
-})
-
-
-
-    return listUsersDepart
-}
-
 export {
     renderCompaniesOnSelect,
     renderDepartments,
     renderByCompany,
     renderAllUsers,
-    renderUsersByDepartament
 }

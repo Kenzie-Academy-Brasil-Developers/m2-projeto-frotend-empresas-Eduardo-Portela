@@ -23,8 +23,8 @@ const renderUserInfos = async () => {
 
     profileUsername.innerText = `${infoUserLoged.username}`
     profileEmail.innerText = `${infoUserLoged.email}`
-    profileNivel.innerText = `${infoUserLoged.professional_level}`
-    profileTypeWork.innerText = `${infoUserLoged.kind_of_work}`
+    profileNivel.innerText = `${infoUserLoged.professional_level ? infoUserLoged.professional_level : ""}`
+    profileTypeWork.innerText = `${infoUserLoged.kind_of_work ? infoUserLoged.kind_of_work : ""}`
     profileButton.classList.add("edit")
     profileInfo.classList.add("profile-info")
 
@@ -75,7 +75,7 @@ const renderCompanyAndDepartName = async ()=> {
 
     jobInfo.insertAdjacentHTML("afterbegin", `
     <div class="company-info">
-        <p>${companyById.name} -  </p>
+        <p>${companyById.name} - </p>
         <p>${companyId.name}</p>
     </div>
     `)
