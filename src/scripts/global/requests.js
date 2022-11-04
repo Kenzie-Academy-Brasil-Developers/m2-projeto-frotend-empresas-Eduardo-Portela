@@ -397,6 +397,22 @@ async function dismissWorker(uuid){
     }
 }
 
+async function listCompaniesBySector(sector){
+    try {
+        const request = await fetch(`${baseUrl}/companies/${sector}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        const response = await request.json()
+        
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export{
     getSectors,
     getFullCompanies,
