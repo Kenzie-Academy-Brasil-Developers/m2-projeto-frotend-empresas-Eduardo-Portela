@@ -1,5 +1,5 @@
 import { createModal, deleteDepartmentForm, deleteUserForm, editDepartmentForm, editUserForm, modalViewDepartment } from "../global/modalForms.js";
-import { dismissWorker, editDepartment, getAllDepartments, getAllUsers, getCompanyByUuid, getFullCompanies } from "../global/requests.js";
+import { dismissWorker, editDepartment, getAllDepartments, getAllUsers, getCompanyByUuid, getFullCompanies, listDepartmentsByCompany } from "../global/requests.js";
 
 const departments = await getAllDepartments()
 const allUsers = await getAllUsers()
@@ -13,7 +13,7 @@ const renderCompaniesOnSelect = async () => {
         console.log(company)
         const option = document.createElement("option")
         option.innerText = company.name
-        option.value = company.name
+        option.value = company.uuid
         select.appendChild(option)
     });
 
@@ -152,8 +152,10 @@ const renderDepartments = async (list) => {
 
 const renderByCompany = async() => {
     const select = document.querySelector("#select-company")
-    select.addEventListener("change", () => {
-        const departsFiltered = departments.filter((depart)=> depart.companies.name == select.value)
+    select.addEventListener("change", async() => {
+        
+        const departsFiltered = await listDepartmentsByCompany(select.value)
+
         if(select.value == ""){
             renderDepartments(departments)
             
