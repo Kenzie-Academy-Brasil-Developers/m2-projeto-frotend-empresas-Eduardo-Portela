@@ -10,7 +10,6 @@ const renderCompaniesOnSelect = async () => {
     const select = document.querySelector("#select-company")
     
     companies.forEach(company => {
-        console.log(company)
         const option = document.createElement("option")
         option.innerText = company.name
         option.value = company.uuid
@@ -85,7 +84,6 @@ const renderDepartments = async (list) => {
                         departments.forEach(async(depart) => {
                             if(user.department_uuid == depart.uuid){
                                 companyName.innerText = await depart.companies.name
-                                console.log(companyName)
                             }
                         })
                     }
@@ -153,7 +151,7 @@ const renderDepartments = async (list) => {
 const renderByCompany = async() => {
     const select = document.querySelector("#select-company")
     select.addEventListener("change", async() => {
-        
+
         const departsFiltered = await listDepartmentsByCompany(select.value)
 
         if(select.value == ""){
