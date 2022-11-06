@@ -9,7 +9,7 @@
     color: var(--gray100);
     border-radius: 8px;
     box-shadow: 0px 4px 4px var(--gray100);
-    animation: toastIt 4000ms ease-in forwards;
+    animation: toastIt 2000ms ease-in forwards;
 }
 
 @keyframes toastIt{
