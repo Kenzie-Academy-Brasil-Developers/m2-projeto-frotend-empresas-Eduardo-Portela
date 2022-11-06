@@ -21,6 +21,7 @@ const createModal = (content,content2) => {
         const {className} = event.target
         if(className == "back-modal" || className == "button-close" || className == "cancel"){
             backGround.remove()
+            localStorage.removeItem("viewId")
         }
     })
     
@@ -322,7 +323,8 @@ const modalViewDepartment = async (obj) => {
         setTimeout(()=> {
             location.reload()
 
-        }, 4000)
+        }, 2000)
+
      })
 
 

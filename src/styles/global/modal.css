@@ -179,6 +179,15 @@
     gap: 16px;
     width: 850px
 }
+
+.list-users-depart::-webkit-scrollbar{
+    height: 10px;
+}
+
+.list-users-depart::-webkit-scrollbar-thumb{
+    background-color: var(--brand-1);
+}
+
 .list-users-depart .user-depart{
     background-color: var(--white);
     width: 306px;

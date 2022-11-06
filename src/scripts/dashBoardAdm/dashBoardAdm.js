@@ -18,12 +18,20 @@ const createDepartment = async () => {
     })
 }
 
-// const dismissWorker = async () => {
-//     const buttonsDismiss = document.querySelectorAll(".button-dismiss")
-//     console.log(buttonsDismiss)
-// }
+export const autoCLick = async () => {
+    
+        await getAllDepartments()
+        const view = localStorage.getItem("viewId")
+        console.log(view)
+        const buttonsView = [...document.querySelectorAll(".view")]
+        buttonsView.forEach((button) => {
+            if(button.id == view){
+                button.click()
+            }
+        })
+}
 
-// dismissWorker()
+autoCLick()
 
 renderDepartments(departments)
 createDepartment()
