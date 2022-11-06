@@ -68,9 +68,10 @@ const renderCoworkers = async () => {
 
 const renderCompanyAndDepartName = async ()=> {
     const companyId = getInfoCoworkers[0]
-
+    
+    
+    if(companyId){
     const companyById = await getCompanyByUuid(companyId.company_uuid)
-
     const jobInfo = document.querySelector(".job-info")
 
     jobInfo.insertAdjacentHTML("afterbegin", `
@@ -79,7 +80,7 @@ const renderCompanyAndDepartName = async ()=> {
         <p>${companyId.name}</p>
     </div>
     `)
-
+}
 }
 export {
     renderUserInfos,

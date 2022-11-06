@@ -51,6 +51,8 @@ const renderDepartments = async (list) => {
         let getIdDepart = ""
         getIdDepart =  buttonView.id  
 
+        JSON.stringify(localStorage.setItem("viewId", getIdDepart))
+
         const renderUsersByDepartament = async () => {
 
             const emptyDepart = document.createElement("li")
@@ -98,7 +100,7 @@ const renderDepartments = async (list) => {
                         await dismissWorker(buttonDismiss.id)
                         setTimeout(()=> {
                             location.reload()
-                        },4000)
+                        },2000)
                     })
         
                     userLi.append(username,nivel,companyName,buttonDismiss)

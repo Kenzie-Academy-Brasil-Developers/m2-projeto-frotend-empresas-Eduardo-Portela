@@ -56,7 +56,7 @@ async function registerUser(body1){
 
             setTimeout(()=> {
                 window.location.assign("../pages/login.html")
-            },4000)
+            },2000)
 
         }else{
             toast("Opss!", "Algo Deu errado", "../assets/img/error.png")
@@ -108,11 +108,11 @@ async function isAdmim(){
         if(response.is_admin){
             setTimeout(()=> {
                 window.location.assign("../pages/dashBoardAdm.html")
-            }, 4000)
+            }, 2500)
         }else if(!response.is_admin){
             setTimeout(()=> {
                 window.location.assign("../pages/dashBoardUser.html")
-            }, 4000)
+            }, 2500)
         }
 
     } catch (error) {
@@ -450,5 +450,4 @@ export{
     dismissWorker,
     listCompaniesBySector,
     listDepartmentsByCompany,
-
 }
