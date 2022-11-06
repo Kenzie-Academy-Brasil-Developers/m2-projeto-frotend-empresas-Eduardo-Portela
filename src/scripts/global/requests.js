@@ -450,5 +450,4 @@ export{
     dismissWorker,
     listCompaniesBySector,
     listDepartmentsByCompany,
-
 }

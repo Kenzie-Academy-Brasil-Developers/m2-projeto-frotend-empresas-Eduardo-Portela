@@ -22,7 +22,6 @@ export const autoCLick = async () => {
     
         await getAllDepartments()
         const view = localStorage.getItem("viewId")
-        console.log(view)
         const buttonsView = [...document.querySelectorAll(".view")]
         buttonsView.forEach((button) => {
             if(button.id == view){

@@ -180,10 +180,32 @@ const editUserForm = async ({professional_level, kind_of_work, uuid}) => {
     const title = document.createElement("h2")
     title.innerText ="Editar Usuário"
 
-    const nivel = document.createElement("input")
+    //ponto de retorno
+    const nivel = document.createElement("select")
     nivel.setAttribute("placeholder",`${professional_level ? professional_level : "selecione nivel profissional"}`)
     nivel.setAttribute("name","professional_level")
     nivel.setAttribute("required","true")
+
+    const optionDefaultNivel = document.createElement("option")
+    optionDefaultNivel.innerText = professional_level ? professional_level : "selecione o nível profissional"
+
+    const option4 = document.createElement("option")
+    option4.value = "estágio"
+    option4.innerText = "Estágio"
+
+    const option5 = document.createElement("option")
+    option5.value = "júnior"
+    option5.innerText = "Júnior"
+
+    const option6 = document.createElement("option")
+    option6.value = "pleno"
+    option6.innerText = "Pleno"
+
+    const option7 = document.createElement("option")
+    option7.value = "sênior"
+    option7.innerText = "Sênior"
+
+    nivel.append(optionDefaultNivel,option4,option5,option6, option7)
     
     const kindOfWork = document.createElement("select")
     const optionDefault = document.createElement("option")
@@ -261,7 +283,6 @@ const deleteUserForm = async ({username, uuid}) => {
         await renderAllUsers(allUsers)
         const backModal = e.path[2]
         backModal.remove()
-        console.log(allUsers)
     })
     return form
 
