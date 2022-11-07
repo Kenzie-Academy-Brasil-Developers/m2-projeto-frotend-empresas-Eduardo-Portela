@@ -7,8 +7,7 @@ import { renderAllUsers, renderByCompany, renderCompaniesOnSelect, renderDepartm
 
 const departments = await getAllDepartments()
 const allUsers = await getAllUsers()
-verify()
-logout()
+
 
 const createDepartment = async () => {
     const buttonCreate = document.querySelector(".create-department")
@@ -31,9 +30,10 @@ export const autoCLick = async () => {
 }
 
 autoCLick()
-
 renderDepartments(departments)
 createDepartment()
 renderCompaniesOnSelect()
 renderByCompany()
 renderAllUsers(allUsers)
+verify()
+logout()
